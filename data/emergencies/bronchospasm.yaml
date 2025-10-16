@@ -1,0 +1,61 @@
+meta:
+  id: bronchospasm
+  title: "Bronchospasm"
+  parent: airway_respiratory
+  aliases:
+    - "Intraoperative bronchoconstriction"
+  keywords:
+    - "wheezing"
+    - "increased airway pressure"
+    - "reactive airway"
+  related_topics:
+    - hypoxemia
+    - anaphylaxis_anaphylactoid
+    - aspiration_atelectasis
+  priority: 0.75
+  version: "2025-10-15"
+
+summary: >
+  Acute narrowing of bronchial smooth muscle leading to high airway pressures,
+  wheeze, and hypoxemia that requires prompt bronchodilation and cause review.
+
+signals:
+  - "Expiratory wheeze or silent chest with resistance to ventilation"
+  - "Elevated peak inspiratory pressure and prolonged expiration"
+  - "Falling oxygen saturation or rising ETCO2"
+
+red_flags:
+  - "Hemodynamic instability suggesting air-trapping or tension physiology"
+  - "Concurrent rash or hypotension pointing toward anaphylaxis"
+
+primary_differential:
+  - "Reactive airway disease"
+  - "Anaphylaxis"
+  - "Aspiration"
+  - "Mechanical obstruction or kinked tube"
+
+first_checks:
+  - "Switch to manual ventilation to gauge compliance"
+  - "Ensure 100% oxygen and deepen anesthetic as needed"
+  - "Administer bronchodilator therapy per protocol"
+
+cognitive_prompts:
+  - "Could anaphylaxis or aspiration be triggering the bronchospasm?"
+  - "Is there a mechanical obstruction such as secretions or kinking?"
+  - "Would adjusting ventilator settings reduce air trapping?"
+
+contraindications_notes:
+  - "Avoid excessive manual ventilation pressures that risk barotrauma"
+  - "Consider ketamine cautiously if hemodynamics are unstable"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

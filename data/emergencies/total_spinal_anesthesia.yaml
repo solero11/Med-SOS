@@ -1,0 +1,60 @@
+meta:
+  id: total_spinal_anesthesia
+  title: "Total Spinal Anesthesia"
+  parent: special_situations
+  aliases:
+    - "High spinal block"
+  keywords:
+    - "neuraxial anesthesia"
+    - "apnea"
+    - "profound hypotension"
+  related_topics:
+    - hypotension_intraop
+    - bradycardia_unstable_asystole_pea
+  priority: 0.8
+  version: "2025-10-15"
+
+summary: >
+  Excessive cephalad spread of neuraxial local anesthetic causing profound
+  sympathetic block, bradycardia, and respiratory compromise.
+
+signals:
+  - "Rapid hypotension and bradycardia after neuraxial dosing"
+  - "Difficulty breathing, voice change, or upper extremity weakness"
+  - "Diminished motor and sensory function above expected block level"
+
+red_flags:
+  - "Apnea requiring immediate airway support"
+  - "Cardiac arrest despite resuscitation efforts"
+
+primary_differential:
+  - "High spinal block"
+  - "Intrathecal catheter migration"
+  - "Local anesthetic systemic toxicity"
+  - "Vasovagal reaction"
+
+first_checks:
+  - "Support airway and ventilation with 100% oxygen"
+  - "Treat hypotension with vasopressors and IV fluids"
+  - "Consider intralipid therapy if LAST suspected concurrently"
+
+cognitive_prompts:
+  - "Was dosing appropriate for patient size and catheter depth?"
+  - "Could intrathecal catheter migration have gone unnoticed?"
+  - "Is conversion to general anesthesia indicated for ongoing surgery?"
+
+contraindications_notes:
+  - "Avoid large bolus doses when incremental titration is possible"
+  - "Prepare for rapid sequence induction if airway reflexes lost"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

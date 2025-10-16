@@ -1,0 +1,60 @@
+meta:
+  id: power_equipment_failure
+  title: "Power Failure / Equipment Failure"
+  parent: special_situations
+  aliases:
+    - "Electrical outage"
+  keywords:
+    - "power loss"
+    - "equipment failure"
+    - "backup systems"
+  related_topics:
+    - oxygen_supply_failure
+    - delayed_emergence
+  priority: 0.7
+  version: "2025-10-15"
+
+summary: >
+  Loss of primary electrical power or critical equipment requiring immediate
+  transition to backup systems to maintain ventilation, monitoring, and anesthesia delivery.
+
+signals:
+  - "Operating room lights or monitors shutting down unexpectedly"
+  - "Ventilator failure alarms or switched-off anesthesia machine"
+  - "Facility announcements of power issues"
+
+red_flags:
+  - "Loss of patient ventilation or monitoring capability"
+  - "Battery backups failing to engage"
+
+primary_differential:
+  - "Hospital-wide power outage"
+  - "Circuit breaker trip"
+  - "Equipment malfunction"
+  - "Battery failure"
+
+first_checks:
+  - "Switch to manual ventilation with self-inflating bag"
+  - "Activate backup lighting and monitoring devices"
+  - "Verify anesthesia delivery using alternate vaporizers or IV agents"
+
+cognitive_prompts:
+  - "Has facilities been notified and estimated restoration confirmed?"
+  - "Are essential medications and manual monitors immediately accessible?"
+  - "Do we need to postpone or abort the procedure for patient safety?"
+
+contraindications_notes:
+  - "Avoid relying solely on unverified battery status"
+  - "Document downtime and mitigation steps for post-event review"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

@@ -1,0 +1,61 @@
+meta:
+  id: endocrine_adrenal_thyroid
+  title: "Endocrine Crisis (Adrenal Insufficiency / Thyroid Storm)"
+  parent: allergic_drug_metabolic
+  aliases:
+    - "Adrenal crisis"
+    - "Thyroid storm"
+  keywords:
+    - "endocrine emergency"
+    - "stress dose steroids"
+    - "thyrotoxicosis"
+  related_topics:
+    - hypotension_intraop
+    - electrolyte_disturbances
+  priority: 0.7
+  version: "2025-10-15"
+
+summary: >
+  Acute endocrine decompensation presenting with hemodynamic instability,
+  hypermetabolism, or shock that requires hormone replacement and targeted supportive care.
+
+signals:
+  - "Unexplained refractory hypotension in steroid-dependent patients"
+  - "Hyperpyrexia, tachycardia, and agitation consistent with thyroid storm"
+  - "Electrolyte disturbances such as hyponatremia or hyperkalemia"
+
+red_flags:
+  - "Cardiovascular collapse despite standard resuscitation"
+  - "Severe neuromuscular symptoms or altered mental status"
+
+primary_differential:
+  - "Adrenal insufficiency crisis"
+  - "Thyroid storm"
+  - "Pheochromocytoma crisis"
+  - "Sepsis"
+
+first_checks:
+  - "Review history for chronic steroid or thyroid disease"
+  - "Send urgent cortisol, ACTH, and thyroid function tests"
+  - "Administer empiric stress-dose steroids if adrenal crisis suspected"
+
+cognitive_prompts:
+  - "Could recent medication changes precipitate endocrine instability?"
+  - "Is beta-blockade appropriate to mitigate thyroid storm tachycardia?"
+  - "Should endocrine consultation be activated for definitive management?"
+
+contraindications_notes:
+  - "Avoid delaying steroid replacement pending labs in unstable patients"
+  - "Use caution with aspirin in thyroid storm due to free hormone displacement"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

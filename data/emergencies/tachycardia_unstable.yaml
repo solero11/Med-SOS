@@ -1,0 +1,60 @@
+meta:
+  id: tachycardia_unstable
+  title: "Unstable Tachycardia (SVT / VT / VF)"
+  parent: circulatory_cardiovascular
+  aliases:
+    - "Perioperative tachyarrhythmia"
+  keywords:
+    - "tachycardia"
+    - "arrhythmia"
+    - "unstable rhythm"
+  related_topics:
+    - cardiac_arrest
+    - electrolyte_disturbances
+  priority: 0.8
+  version: "2025-10-15"
+
+summary: >
+  Rapid heart rhythm causing hypotension, ischemia, or altered perfusion that
+  requires immediate rhythm identification and synchronized intervention.
+
+signals:
+  - "Heart rate >150 bpm with hemodynamic compromise"
+  - "ECG showing narrow or wide complex tachyarrhythmia"
+  - "Signs of ischemia, altered mental status, or shock"
+
+red_flags:
+  - "Degeneration to ventricular fibrillation or pulseless VT"
+  - "Underlying cause such as hemorrhage or electrolyte imbalance"
+
+primary_differential:
+  - "Supraventricular tachycardia"
+  - "Atrial fibrillation with rapid ventricular response"
+  - "Ventricular tachycardia or fibrillation"
+  - "High sympathetic tone from pain or hypovolemia"
+
+first_checks:
+  - "Assess pulse, blood pressure, and mental status immediately"
+  - "Ensure defibrillator and synchronized cardioversion ready"
+  - "Review recent medications and electrolyte values"
+
+cognitive_prompts:
+  - "Could hypovolemia or hypoxia be driving the tachyarrhythmia?"
+  - "Is synchronized cardioversion indicated before pharmacologic therapy?"
+  - "Should reversible causes like electrolytes or acid-base be corrected now?"
+
+contraindications_notes:
+  - "Avoid delaying cardioversion when instability persists"
+  - "Use caution with AV nodal blockers if VT is possible"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

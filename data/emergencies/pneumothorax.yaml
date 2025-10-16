@@ -1,0 +1,62 @@
+meta:
+  id: pneumothorax
+  title: "Pneumothorax / Tension Pneumothorax"
+  parent: airway_respiratory
+  aliases:
+    - "Intraoperative tension pneumothorax"
+  keywords:
+    - "high airway pressure"
+    - "unilateral breath sounds"
+    - "barotrauma"
+  related_topics:
+    - bronchospasm
+    - air_embolism_venous
+    - hypotension_intraop
+  priority: 0.9
+  version: "2025-10-15"
+
+summary: >
+  Accumulation of intrapleural air causing lung collapse and cardiovascular
+  compromise, often signalled by sudden hypoxemia, high airway pressures, and
+  hemodynamic change.
+
+signals:
+  - "Rising peak inspiratory pressures with declining tidal volume"
+  - "Absent or diminished breath sounds on one side"
+  - "Hypoxemia with increasing airway resistance or hypotension"
+
+red_flags:
+  - "Rapid cardiovascular collapse with jugular venous distention"
+  - "Tracheal deviation or severe hypercarbia"
+
+primary_differential:
+  - "Bronchospasm"
+  - "Mucus plug or endobronchial intubation"
+  - "Hemothorax"
+  - "Air embolism"
+
+first_checks:
+  - "Switch to manual ventilation and assess compliance"
+  - "Confirm tube depth and auscultate both lungs"
+  - "Notify surgical team and prepare for decompression"
+
+cognitive_prompts:
+  - "Could equipment or circuit failure explain the pressure changes?"
+  - "Is needle decompression indicated before imaging?"
+  - "Would ultrasound or transesophageal echocardiography clarify the diagnosis?"
+
+contraindications_notes:
+  - "Avoid high ventilation pressures that worsen barotrauma"
+  - "Ensure decompression site avoids vascular grafts or surgical fields"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

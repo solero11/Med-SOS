@@ -1,0 +1,60 @@
+meta:
+  id: air_embolism_venous
+  title: "Venous Air Embolism"
+  parent: airway_respiratory
+  aliases:
+    - "VAE"
+  keywords:
+    - "vascular air"
+    - "sitting craniotomy"
+    - "mill wheel murmur"
+  related_topics:
+    - hypotension_intraop
+    - pneumothorax
+  priority: 0.75
+  version: "2025-10-15"
+
+summary: >
+  Entry of air into the venous circulation causing obstruction of pulmonary
+  blood flow, hypoxemia, and cardiovascular collapse if untreated.
+
+signals:
+  - "Sudden drop in ETCO2 with hypotension or hypoxemia"
+  - "Precordial Doppler or TEE detection of air bubbles"
+  - "Mill-wheel murmur or aspiration of air via central line"
+
+red_flags:
+  - "Right heart strain or paradoxical embolism in patients with shunts"
+  - "Cardiovascular collapse despite supportive measures"
+
+primary_differential:
+  - "Pulmonary embolism"
+  - "Tension pneumothorax"
+  - "Massive hemorrhage"
+  - "Anaphylaxis"
+
+first_checks:
+  - "Alert surgical team and flood field with saline"
+  - "Place patient in Durant or left lateral decubitus with head down"
+  - "Aspirate air via central venous catheter if present"
+
+cognitive_prompts:
+  - "Can venous access be positioned to aspirate entrained air effectively?"
+  - "Would transesophageal echo clarify ongoing air entrainment?"
+  - "Is patient at risk for paradoxical embolism requiring bubble filters?"
+
+contraindications_notes:
+  - "Avoid nitrous oxide which can expand intravascular air"
+  - "Limit PEEP that might worsen venous air entry"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

@@ -1,0 +1,60 @@
+meta:
+  id: failed_airway
+  title: "Failed Airway"
+  parent: airway_respiratory
+  aliases:
+    - "Cannot intubate cannot ventilate"
+  keywords:
+    - "airway loss"
+    - "unable to intubate"
+    - "ventilation failure"
+  related_topics:
+    - difficult_airway_unanticipated
+    - hypoxemia
+  priority: 0.95
+  version: "2025-10-15"
+
+summary: >
+  Emergent loss of both intubation and oxygenation capability requiring
+  immediate rescue to preserve oxygen delivery and prevent cardiac arrest.
+
+signals:
+  - "Repeated unsuccessful intubation attempts with worsening oxygen saturation"
+  - "Inability to maintain ventilation or oxygenation despite adjuncts"
+  - "Rapidly deteriorating hemodynamics or loss of capnography waveform"
+
+red_flags:
+  - "Stridor or no air movement despite airway adjuncts"
+  - "Bradycardia or hypotension signalling imminent arrest"
+
+primary_differential:
+  - "Severe airway obstruction"
+  - "Anatomic anomaly"
+  - "Laryngospasm"
+  - "Equipment malfunction"
+
+first_checks:
+  - "Call for help and announce failed airway protocol"
+  - "Initiate 100% oxygen and optimize positioning"
+  - "Assess for possible surgical airway landmarks"
+
+cognitive_prompts:
+  - "Have you limited intubation attempts to avoid airway trauma?"
+  - "Is a surgical airway or ECMO team immediately available?"
+  - "Could supraglottic ventilation temporarily restore oxygenation?"
+
+contraindications_notes:
+  - "Avoid repeated attempts that worsen edema or bleeding"
+  - "Ensure cricoid pressure is released if impairing ventilation"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

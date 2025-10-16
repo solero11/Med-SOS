@@ -1,0 +1,61 @@
+meta:
+  id: oxygen_supply_failure
+  title: "Oxygen Supply Failure"
+  parent: airway_respiratory
+  aliases:
+    - "Pipeline failure"
+    - "Cylinder depletion"
+  keywords:
+    - "O2 pipeline"
+    - "backup cylinder"
+    - "oxygen analyzer"
+  related_topics:
+    - hypoxemia
+    - power_equipment_failure
+  priority: 0.8
+  version: "2025-10-15"
+
+summary: >
+  Loss or contamination of delivered oxygen due to pipeline disruption or
+  cylinder depletion, requiring immediate switch to verified backup supply.
+
+signals:
+  - "Oxygen analyzer alarms or reads low oxygen concentration"
+  - "Pipeline low-pressure alarm or failure of wall outlets"
+  - "Hypoxemia occurring despite normal airway mechanics"
+
+red_flags:
+  - "Multiple rooms reporting oxygen issues simultaneously"
+  - "Evidence of cross-connection or contamination of pipeline gas"
+
+primary_differential:
+  - "Pipeline failure"
+  - "Cylinder empty or closed"
+  - "Analyzer malfunction"
+  - "Ventilator malfunction"
+
+first_checks:
+  - "Open backup oxygen cylinder and disconnect pipeline source"
+  - "Switch to manual ventilation with self-inflating bag if needed"
+  - "Confirm analyzer calibration using known oxygen source"
+
+cognitive_prompts:
+  - "Has engineering or facilities been notified to confirm central supply status?"
+  - "Could analyzer failure be misguiding the response?"
+  - "Are other anesthetizing locations experiencing similar alarms?"
+
+contraindications_notes:
+  - "Avoid reconnecting to pipeline until verified safe"
+  - "Check oxygen flush valves cautiously to conserve limited supply"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

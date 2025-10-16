@@ -1,0 +1,60 @@
+meta:
+  id: bradycardia_unstable_asystole_pea
+  title: "Bradycardia — Unstable / Asystole / PEA"
+  parent: circulatory_cardiovascular
+  aliases:
+    - "Perioperative bradyarrhythmia"
+  keywords:
+    - "bradycardia"
+    - "asystole"
+    - "pulseless electrical activity"
+  related_topics:
+    - cardiac_arrest
+    - hypotension_intraop
+  priority: 0.85
+  version: "2025-10-15"
+
+summary: >
+  Clinically significant bradycardia or pulseless electrical activity causing
+  hypotension or collapse, necessitating immediate evaluation and resuscitation.
+
+signals:
+  - "Heart rate <40 bpm with hypotension or poor perfusion"
+  - "Loss of pulse despite organized electrical activity"
+  - "Asystolic tracing on ECG or monitor artifact mimicking bradycardia"
+
+red_flags:
+  - "Rapid progression to cardiac arrest"
+  - "Underlying reversible cause such as hyperkalemia or vagal stimulus"
+
+primary_differential:
+  - "Excess anesthetic or vagal stimulation"
+  - "Hypoxemia or ischemia"
+  - "Electrolyte imbalance"
+  - "Conduction system disease"
+
+first_checks:
+  - "Assess airway, breathing, circulation, and confirm pulse"
+  - "Call for help, initiate ACLS protocol as indicated"
+  - "Evaluate recent medications, surgical manipulations, and labs"
+
+cognitive_prompts:
+  - "Could surgical traction or vagal reflex be driving the bradycardia?"
+  - "Is there a reversible Hs and Ts cause that must be addressed now?"
+  - "Would transcutaneous or transvenous pacing stabilize the patient?"
+
+contraindications_notes:
+  - "Avoid atropine in transplanted hearts where it may be ineffective"
+  - "Careful with beta-blockers or calcium channel blockers when conduction impaired"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

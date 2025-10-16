@@ -1,0 +1,61 @@
+meta:
+  id: hypotension_intraop
+  title: "Hypotension — Intraoperative"
+  parent: circulatory_cardiovascular
+  aliases:
+    - "Low MAP in OR"
+  keywords:
+    - "hypotension"
+    - "low blood pressure"
+    - "MAP management"
+  related_topics:
+    - hemorrhage_massive_transfusion
+    - anaphylaxis_anaphylactoid
+    - cardiac_arrest
+  priority: 0.85
+  version: "2025-10-15"
+
+summary: >
+  Mean arterial pressure below target thresholds during anesthesia that
+  threatens organ perfusion and demands rapid assessment of reversible causes.
+
+signals:
+  - "Persistent MAP below institutional threshold"
+  - "Accompanying tachycardia, bradycardia, or change in ETCO2"
+  - "Unexpected blood loss or anesthetic depth adjustments"
+
+red_flags:
+  - "Signs of end-organ dysfunction such as ischemic ECG changes"
+  - "Refractory hypotension despite fluids and vasopressors"
+
+primary_differential:
+  - "Hypovolemia or hemorrhage"
+  - "Vasodilation from anesthetics or sepsis"
+  - "Cardiac dysfunction (ischemia, tamponade, embolism)"
+  - "Anaphylaxis"
+
+first_checks:
+  - "Verify blood pressure measurement accuracy"
+  - "Assess surgical field and suction for hidden bleeding"
+  - "Review recent medications and anesthetic depth"
+
+cognitive_prompts:
+  - "Could airway or ventilation issues be driving hypotension?"
+  - "Is there a reversible medication effect that can be minimized?"
+  - "Would invasive monitoring clarify the hemodynamic state?"
+
+contraindications_notes:
+  - "Avoid excessive vasopressor dosing before correcting volume status"
+  - "Reassess patient positioning for vena caval compression"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

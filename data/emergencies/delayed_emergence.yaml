@@ -1,0 +1,61 @@
+meta:
+  id: delayed_emergence
+  title: "Delayed Emergence from Anesthesia"
+  parent: special_situations
+  aliases:
+    - "Prolonged recovery"
+  keywords:
+    - "awakening delay"
+    - "residual anesthetic"
+    - "neurologic assessment"
+  related_topics:
+    - awareness_under_anesthesia
+    - endocrine_adrenal_thyroid
+    - electrolyte_disturbances
+  priority: 0.6
+  version: "2025-10-15"
+
+summary: >
+  Failure to regain expected consciousness postoperatively due to residual
+  anesthetics, metabolic abnormalities, or neurologic injury requiring systematic evaluation.
+
+signals:
+  - "Persistent unresponsiveness beyond anticipated recovery time"
+  - "Hypoventilation or airway obstruction during emergence"
+  - "Abnormal pupils or neurologic findings"
+
+red_flags:
+  - "Hypoglycemia, electrolyte imbalance, or hypoxia detected"
+  - "Signs of stroke or intracranial event"
+
+primary_differential:
+  - "Residual anesthetics or neuromuscular blockade"
+  - "Metabolic derangements"
+  - "Neurologic injury or stroke"
+  - "Hypothermia"
+
+first_checks:
+  - "Review anesthetic record for last doses and infusions"
+  - "Assess neuromuscular function and consider reversal agents"
+  - "Obtain blood glucose, blood gas, and electrolytes"
+
+cognitive_prompts:
+  - "Could concurrent medications or organ dysfunction prolong emergence?"
+  - "Is imaging indicated to rule out neurologic causes?"
+  - "Should ICU monitoring be initiated while diagnosis clarified?"
+
+contraindications_notes:
+  - "Avoid premature discharge from PACU without identifying cause"
+  - "Use sedative reversals cautiously to prevent agitation or hypertension"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

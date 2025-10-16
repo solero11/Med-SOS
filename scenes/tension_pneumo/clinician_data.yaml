@@ -1,0 +1,123 @@
+vitals:
+  blood_pressure:
+    - t: 5.1
+      value: "110/65"
+      source: monitor
+    - t: 46.0
+      value: "80/40"
+      source: monitor
+      note: "drop during decompensation"
+    - t: 93.2
+      value: "60/30"
+      source: monitor
+    - t: 186.0
+      value: "70/40"
+      source: monitor
+      note: "improving after decompression"
+    - t: 206.0
+      value: "95/50"
+      source: monitor
+    - t: 226.0
+      value: "110/60"
+      source: monitor
+  spo2:
+    - t: 5.1
+      value: "98%"
+      source: pulse_ox
+    - t: 30.3
+      value: "92%"
+      source: pulse_ox
+    - t: 66.0
+      value: "85%"
+      source: pulse_ox
+    - t: 120.0
+      value: "73%"
+      source: pulse_ox
+    - t: 182.0
+      value: "78%"
+      source: pulse_ox
+      note: "rising after needle decompression"
+    - t: 201.2
+      value: "88%"
+      source: pulse_ox
+    - t: 226.0
+      value: "98%"
+      source: pulse_ox
+  heart_rate:
+    - t: 5.1
+      value: "95 bpm"
+      source: monitor
+    - t: 66.0
+      value: "110 bpm"
+      source: monitor
+    - t: 93.2
+      value: "120 bpm"
+      source: monitor
+    - t: 186.0
+      value: "110 bpm"
+      source: monitor
+    - t: 226.0
+      value: "90 bpm"
+      source: monitor
+  etco2:
+    - t: 40.7
+      value: "28 mmHg"
+      source: capnograph
+    - t: 80.2
+      value: "22 mmHg"
+      source: capnograph
+    - t: 178.0
+      value: "30 mmHg"
+      source: capnograph
+    - t: 201.2
+      value: "35 mmHg"
+      source: capnograph
+    - t: 258.0
+      value: "38 mmHg"
+      source: capnograph
+
+medications:
+  - t: 52.5
+    name: phenylephrine
+    dose: "100 mcg"
+    route: iv
+    response: "brief support, but hypotension persisted"
+  - t: 110.5
+    name: albuterol
+    dose: "MDI"
+    route: inhaled
+    response: "no change in pressures or volumes"
+
+procedures:
+  - t: 155.0
+    name: tension_pneumothorax_confirmation
+    detail: "Left lung silent, trachea deviated"
+  - t: 166.0
+    name: needle_decompression
+    site: "14G left mid-axillary"
+    response: "escaping air, compliance improved"
+  - t: 215.2
+    name: chest_tube_preparation
+    detail: "Chest tube tray up, ventilation in short bursts"
+
+evaluations:
+  - t: 175.0
+    focus: "ventilation"
+    finding: "Vent pressures down to 30, easier bagging"
+  - t: 196.0
+    focus: "breath_sounds"
+    finding: "Bilateral movement returning, left faint but present"
+
+labs:
+  - t: 200.0
+    test: "ABG"
+    result: "pH 7.28 / PaCO2 48 / PaO2 68 on 100% FiO2"
+    note: "trending upward after decompression"
+  - t: 210.0
+    test: "Hemoglobin"
+    result: "11.9 g/dL"
+
+imaging:
+  - t: 205.0
+    modality: "POCUS"
+    finding: "Lung sliding returning on left; no residual large pneumothorax"

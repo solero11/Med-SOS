@@ -1,0 +1,15 @@
+{
+  "windows": {
+    "version": "1.0.0",
+    "notes": "Initial secure release.",
+    "download_url": "https://example.com/sos/SOS_Button_Installer_1.0.0.exe",
+    "sha256": "REPLACE_WITH_REAL_HASH"
+  },
+  "android": {
+    "versionCode": 1,
+    "versionName": "0.1.0",
+    "notes": "Initial secure release.",
+    "download_url": "https://example.com/sos/SOS_Android_0.1.0.apk",
+    "sha256": "REPLACE_WITH_REAL_HASH"
+  }
+}

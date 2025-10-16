@@ -1,0 +1,62 @@
+meta:
+  id: transfusion_reaction
+  title: "Transfusion Reaction"
+  parent: allergic_drug_metabolic
+  aliases:
+    - "Hemolytic transfusion reaction"
+  keywords:
+    - "transfusion reaction"
+    - "hemolysis"
+    - "febrile reaction"
+  related_topics:
+    - hemorrhage_massive_transfusion
+    - anaphylaxis_anaphylactoid
+    - electrolyte_disturbances
+  priority: 0.75
+  version: "2025-10-15"
+
+summary: >
+  Adverse response to blood product administration ranging from mild febrile
+  reactions to life-threatening hemolysis or TRALI, requiring prompt identification and management.
+
+signals:
+  - "Fever, chills, or hypotension during transfusion"
+  - "Hemoglobinuria, flank pain, or unexpected bleeding"
+  - "Respiratory distress or hypoxemia shortly after transfusion"
+
+red_flags:
+  - "Evidence of acute hemolysis with renal compromise"
+  - "TRALI with severe hypoxemia and pulmonary edema"
+
+primary_differential:
+  - "Acute hemolytic reaction"
+  - "Febrile non-hemolytic reaction"
+  - "Anaphylactic reaction"
+  - "Transfusion-related acute lung injury"
+  - "Transfusion-associated circulatory overload"
+
+first_checks:
+  - "Stop transfusion and maintain IV access"
+  - "Verify patient and blood unit identification"
+  - "Send blood and patient samples per transfusion protocol"
+
+cognitive_prompts:
+  - "Could this be TACO requiring diuretics and ventilation adjustment?"
+  - "Have laboratory markers confirmed hemolysis or alternative diagnosis?"
+  - "Is specialist consultation needed before resuming transfusion?"
+
+contraindications_notes:
+  - "Avoid restarting implicated unit without blood bank clearance"
+  - "Monitor renal function and coagulation closely after severe reactions"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

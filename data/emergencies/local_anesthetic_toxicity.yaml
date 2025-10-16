@@ -1,0 +1,61 @@
+meta:
+  id: local_anesthetic_toxicity
+  title: "Local Anesthetic Systemic Toxicity (LAST)"
+  parent: allergic_drug_metabolic
+  aliases:
+    - "LAST"
+  keywords:
+    - "local anesthetic toxicity"
+    - "lipid emulsion"
+    - "neurologic symptoms"
+  related_topics:
+    - cardiac_arrest
+    - seizures
+    - hypotension_intraop
+  priority: 0.85
+  version: "2025-10-15"
+
+summary: >
+  Systemic absorption or intravascular injection of local anesthetic leading to
+  neurologic and cardiovascular toxicity requiring prompt lipid therapy and supportive care.
+
+signals:
+  - "Perioral numbness, tinnitus, or metallic taste after injection"
+  - "Seizure activity or altered mental status"
+  - "Wide complex arrhythmias, hypotension, or cardiac arrest"
+
+red_flags:
+  - "Cardiovascular collapse refractory to standard ACLS"
+  - "High dose bupivacaine or ropivacaine implicated"
+
+primary_differential:
+  - "Local anesthetic systemic toxicity"
+  - "Intravascular injection of epinephrine-containing solution"
+  - "Hypoxia or hypoglycemia"
+  - "Seizure disorder"
+
+first_checks:
+  - "Stop local anesthetic administration and call for help"
+  - "Secure airway and provide 100% oxygen"
+  - "Initiate lipid emulsion therapy per protocol"
+
+cognitive_prompts:
+  - "Is cardiopulmonary bypass or ECMO available if lipid rescue fails?"
+  - "Have cumulative doses been calculated including previous injections?"
+  - "Could reduced dosing be used in future due to patient weight or comorbidities?"
+
+contraindications_notes:
+  - "Avoid vasopressin, calcium channel blockers, or beta-blockers during LAST arrest"
+  - "Limit epinephrine dosing to avoid exacerbating arrhythmias"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

@@ -1,0 +1,63 @@
+meta:
+  id: electrolyte_disturbances
+  title: "Electrolyte Disturbances (K / Ca / Na)"
+  parent: allergic_drug_metabolic
+  aliases:
+    - "Critical electrolyte imbalance"
+  keywords:
+    - "hyperkalemia"
+    - "hypocalcemia"
+    - "hyponatremia"
+  related_topics:
+    - cardiac_arrest
+    - hypothermia_hyperthermia_mh
+    - endocrine_adrenal_thyroid
+  priority: 0.7
+  version: "2025-10-15"
+
+summary: >
+  Significant deviations in potassium, calcium, or sodium that impact cardiac,
+  neuromuscular, or neurologic function requiring rapid correction tailored to the etiology.
+
+signals:
+  - "ECG changes such as peaked T waves or QT prolongation"
+  - "Neuromuscular irritability, weakness, or seizures"
+  - "Laboratory confirmation of critical electrolyte values"
+
+red_flags:
+  - "Arrhythmias or hemodynamic instability linked to electrolyte shifts"
+  - "Rapid sodium correction risking osmotic demyelination"
+
+primary_differential:
+  - "Hyperkalemia"
+  - "Hypokalemia"
+  - "Hypocalcemia"
+  - "Hypercalcemia"
+  - "Hyponatremia"
+  - "Hypernatremia"
+
+first_checks:
+  - "Confirm lab values and repeat if unexpected"
+  - "Assess renal function, medications, and transfusion history"
+  - "Stabilize myocardium when indicated (e.g., calcium for hyperkalemia)"
+
+cognitive_prompts:
+  - "What is the underlying cause driving the imbalance?"
+  - "How rapidly should correction occur to avoid neurologic injury?"
+  - "Would point-of-care testing guide therapy more precisely?"
+
+contraindications_notes:
+  - "Avoid rapid correction of chronic hyponatremia"
+  - "Use caution with calcium administration in digoxin toxicity"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

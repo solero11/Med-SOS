@@ -1,0 +1,11 @@
+{"t": 1760464184.1834626, "field": "situation", "value": "O2 sats 72%", "value_norm": "sats sats 72", "confidence": 0.8, "conflict": false, "source": "asr"}
+{"t": 1760464185.1981423, "field": "situation", "value": "oxygen 95%", "value_norm": "sats 95", "confidence": 0.5, "conflict": true, "source": "asr"}
+{"t": 1760464186.2029457, "field": "situation", "value": "SpO2 72%", "value_norm": "sats 72", "confidence": 0.5, "conflict": true, "source": "asr"}
+{"t": 1760464186.2029457, "field": "situation", "value": "sats 92%", "value_norm": "sats 92", "confidence": 0.5, "conflict": true, "source": "asr"}
+{"t": 1760464186.2029457, "field": "situation", "value": "SpO2 92%", "value_norm": "sats 92", "confidence": 0.8, "conflict": false, "source": "asr"}
+{"t": 1760464186.2029457, "field": "recommendation", "value": "start compressions", "value_norm": "start compressions", "confidence": 0.8, "conflict": false, "source": "asr"}
+{"t": 1760464187.2115693, "field": "recommendation", "value": "pulse is back", "value_norm": "pulse is back", "confidence": 0.5, "conflict": true, "source": "asr"}
+{"t": 1760464187.2115693, "field": "background", "value": "Patient is a 65 year old male with a history of hypertension, ...", "value_norm": "patient is a 65 year old male with a history of hypertension  diabetes  and recent surgery  presenting with low blood pressure and tachycardia. blood pressure 80 40.", "confidence": 0.9, "conflict": false, "source": "asr"}
+{"t": 1760464187.2115693, "field": "background", "value": "BP 120/80", "value_norm": "blood pressure 120 80", "confidence": 0.5, "conflict": true, "source": "asr"}
+{"t": 1760464187.2115693, "field": "assessment", "value": "cyanotic", "value_norm": "cyanotic", "confidence": 0.7, "conflict": false, "source": "asr"}
+{"t": 1760464187.2115693, "field": "assessment", "value": "pink", "value_norm": "pink", "confidence": 0.5, "conflict": true, "source": "asr"}

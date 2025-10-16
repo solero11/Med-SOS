@@ -1,0 +1,60 @@
+meta:
+  id: amniotic_fluid_embolism
+  title: "Amniotic Fluid Embolism"
+  parent: special_situations
+  aliases:
+    - "AFE"
+  keywords:
+    - "obstetric emergency"
+    - "coagulopathy"
+    - "pulmonary hypertension"
+  related_topics:
+    - hemorrhage_massive_transfusion
+    - cardiac_arrest
+  priority: 0.8
+  version: "2025-10-15"
+
+summary: >
+  Catastrophic obstetric event characterized by sudden cardiovascular collapse,
+  hypoxemia, and coagulopathy following amniotic fluid entry into maternal circulation.
+
+signals:
+  - "Acute hypoxia and hypotension during labor, delivery, or soon after"
+  - "Seizure-like activity or altered mental status"
+  - "Rapid development of DIC and uterine atony"
+
+red_flags:
+  - "Refractory coagulopathy requiring massive transfusion"
+  - "Pulmonary hypertension leading to right heart failure"
+
+primary_differential:
+  - "Amniotic fluid embolism"
+  - "Pulmonary embolism"
+  - "Anaphylaxis"
+  - "Septic shock"
+
+first_checks:
+  - "Call obstetric, anesthesia, and critical care teams immediately"
+  - "Support oxygenation, ventilation, and circulation aggressively"
+  - "Activate massive transfusion protocol and manage coagulopathy"
+
+cognitive_prompts:
+  - "Is ECMO or advanced cardiac support available if shock persists?"
+  - "Could another diagnosis like pulmonary embolism better explain findings?"
+  - "Has fetal status been accounted for while stabilizing the mother?"
+
+contraindications_notes:
+  - "Avoid delays in transfusion support while awaiting laboratory confirmation"
+  - "Balance uterotonic therapy with cardiovascular stability"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

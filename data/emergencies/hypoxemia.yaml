@@ -1,0 +1,62 @@
+meta:
+  id: hypoxemia
+  title: "Hypoxia / Hypoxemia"
+  parent: airway_respiratory
+  aliases:
+    - "Intraoperative desaturation"
+  keywords:
+    - "low oxygen saturation"
+    - "SpO2 drop"
+    - "ventilation problem"
+  related_topics:
+    - bronchospasm
+    - aspiration_atelectasis
+    - pneumothorax
+  priority: 0.85
+  version: "2025-10-15"
+
+summary: >
+  Acute decrease in oxygen saturation or arterial oxygenation requiring rapid
+  assessment of the airway, lungs, circuit, and patient physiology.
+
+signals:
+  - "SpO2 below target despite high inspired oxygen"
+  - "Falling PaO2 or arterial desaturation on blood gas"
+  - "Capnography, airway pressure, or breath sounds changing unexpectedly"
+
+red_flags:
+  - "Hemodynamic compromise accompanying hypoxemia"
+  - "Evidence of airway obstruction or unilateral breath sounds"
+
+primary_differential:
+  - "Airway obstruction or displacement"
+  - "Ventilation-perfusion mismatch"
+  - "Pneumothorax"
+  - "Aspiration or atelectasis"
+  - "Pulmonary embolism or air embolism"
+
+first_checks:
+  - "Confirm probe placement and calibration for SpO2"
+  - "Increase FiO2 to 100% and assess airway patency"
+  - "Auscultate lungs, check circuit pressures, and evaluate ventilator"
+
+cognitive_prompts:
+  - "Could equipment malfunction explain the desaturation?"
+  - "Would manual ventilation clarify compliance and breath sounds?"
+  - "Is there a reversible cause such as mucus plug, pneumothorax, or embolism?"
+
+contraindications_notes:
+  - "Avoid delaying definitive airway assessment while troubleshooting devices"
+  - "Take care with high airway pressures that risk barotrauma"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

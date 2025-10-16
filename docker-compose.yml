@@ -1,0 +1,86 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: sos
+      POSTGRES_PASSWORD: sos_pw
+      POSTGRES_DB: sos
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sos -d sos"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  orchestrator:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      ASR_API_URL: ${ASR_API_URL:-http://asr:9001}
+      KOKORO_API_URL: ${KOKORO_API_URL:-http://tts:8880}
+      LLM_API_URL: ${LLM_API_URL:-https://openrouter.ai/api/v1/chat/completions}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      DATABASE_URL: postgresql://sos:sos_pw@db:5432/sos
+      VALIDATION_BUCKET: ${VALIDATION_BUCKET:-sos-validation}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      TOKEN_SECRET: ${TOKEN_SECRET:-change-me}
+      ORCH_ENV: cloud
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sos.rule=Host(`${HOSTNAME}`)"
+      - "traefik.http.routers.sos.entrypoints=websecure"
+      - "traefik.http.routers.sos.tls.certresolver=myresolver"
+    expose:
+      - "8000"
+      - "9464"
+
+  proxy:
+    image: traefik:v3.0
+    command:
+      - "--providers.docker=true"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL:-admin@example.com}"
+      - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
+    ports:
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./acme.json:/acme.json
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - ./grafana-provisioning:/etc/grafana/provisioning
+
+volumes:
+  db_data:

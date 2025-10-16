@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SOS Admin Dashboard</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; background: #f7f7f7; }
+      h2 { color: #333; }
+      #metrics pre { background: #fff; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    </style>
+    <script defer src="/static/dashboard.js"></script>
+  </head>
+  <body>
+    <h2>SOS Admin Dashboard</h2>
+    <p>Append <code>?token=&lt;ADMIN_JWT&gt;</code> to this URL to authenticate.</p>
+    <div id="status">Connecting…</div>
+    <section id="summary">Loading summary...</section>
+    <div id="metrics"></div>
+  </body>
+</html>

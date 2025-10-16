@@ -1,0 +1,45 @@
+# Canonical catalog of emergency knowledge "books".
+# Each entry corresponds to a YAML file stored flat in this directory.
+
+- id: airway_respiratory
+  title: "Airway & Respiratory Emergencies"
+  children:
+    - failed_airway
+    - difficult_airway_unanticipated
+    - hypoxemia
+    - bronchospasm
+    - pneumothorax
+    - aspiration_atelectasis
+    - air_embolism_venous
+    - oxygen_supply_failure
+
+- id: circulatory_cardiovascular
+  title: "Circulatory & Cardiovascular Emergencies"
+  children:
+    - hypotension_intraop
+    - hemorrhage_massive_transfusion
+    - tachycardia_unstable
+    - bradycardia_unstable_asystole_pea
+    - myocardial_ischemia_infarction
+    - cardiac_arrest
+    - cardiac_tamponade_thrombosis
+
+- id: allergic_drug_metabolic
+  title: "Allergic, Drug-Related & Metabolic"
+  children:
+    - anaphylaxis_anaphylactoid
+    - local_anesthetic_toxicity
+    - transfusion_reaction
+    - electrolyte_disturbances
+    - hypothermia_hyperthermia_mh
+    - endocrine_adrenal_thyroid
+
+- id: special_situations
+  title: "Special Situations & Systems"
+  children:
+    - amniotic_fluid_embolism
+    - total_spinal_anesthesia
+    - fire_in_or
+    - power_equipment_failure
+    - awareness_under_anesthesia
+    - delayed_emergence

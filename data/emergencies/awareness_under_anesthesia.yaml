@@ -1,0 +1,60 @@
+meta:
+  id: awareness_under_anesthesia
+  title: "Awareness Under Anesthesia"
+  parent: special_situations
+  aliases:
+    - "Intraoperative awareness"
+  keywords:
+    - "BIS monitoring"
+    - "anesthetic depth"
+    - "patient recall"
+  related_topics:
+    - delayed_emergence
+    - total_spinal_anesthesia
+  priority: 0.6
+  version: "2025-10-15"
+
+summary: >
+  Patient consciousness or recall during anesthesia, typically identified by
+  movement, autonomic signs, or patient report, necessitating rapid assessment of anesthetic delivery.
+
+signals:
+  - "Unexpected movement or hemodynamic response despite neuromuscular blockade"
+  - "High BIS or processed EEG readings inconsistent with anesthetic depth"
+  - "Patient report of awareness postoperatively"
+
+red_flags:
+  - "Evidence of inadequate anesthetic delivery due to infusion or vaporizer failure"
+  - "Psychological distress or post-traumatic response risk"
+
+primary_differential:
+  - "Inadequate anesthetic dosing"
+  - "Equipment malfunction"
+  - "Pharmacologic resistance or drug interactions"
+  - "Light anesthesia for hemodynamic management"
+
+first_checks:
+  - "Verify anesthetic delivery systems and concentrations"
+  - "Increase anesthetic depth while maintaining hemodynamic stability"
+  - "Provide amnestic agents if awareness suspected"
+
+cognitive_prompts:
+  - "Could analgesia or sedation adjuncts be optimized to reduce recall?"
+  - "Has the event been documented and communicated to the patient compassionately?"
+  - "Do we need multidisciplinary follow-up for psychological support?"
+
+contraindications_notes:
+  - "Avoid dismissing patient concern without thorough evaluation"
+  - "Use caution with benzodiazepines in patients at risk for delirium"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

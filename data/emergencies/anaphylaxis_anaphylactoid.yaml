@@ -1,0 +1,61 @@
+meta:
+  id: anaphylaxis_anaphylactoid
+  title: "Anaphylaxis / Anaphylactoid Reaction"
+  parent: allergic_drug_metabolic
+  aliases:
+    - "Perioperative anaphylaxis"
+  keywords:
+    - "hypotension"
+    - "bronchospasm"
+    - "allergic reaction"
+  related_topics:
+    - bronchospasm
+    - hypotension_intraop
+    - transfusion_reaction
+  priority: 0.95
+  version: "2025-10-15"
+
+summary: >
+  Systemic hypersensitivity response presenting with cardiovascular collapse,
+  airway compromise, or cutaneous signs that demands immediate epinephrine and trigger mitigation.
+
+signals:
+  - "Sudden hypotension with tachycardia after exposure to a potential allergen"
+  - "Bronchospasm, wheeze, or difficulty ventilating"
+  - "Urticaria, flushing, or facial edema during anesthesia"
+
+red_flags:
+  - "Rapid progression to cardiovascular collapse or airway obstruction"
+  - "Biphasic reactions occurring after initial stabilization"
+
+primary_differential:
+  - "Anaphylaxis"
+  - "Anaphylactoid reaction"
+  - "Severe bronchospasm"
+  - "Pulmonary embolism"
+
+first_checks:
+  - "Stop suspected trigger and call for help"
+  - "Administer epinephrine per protocol and provide 100% oxygen"
+  - "Secure airway and initiate volume resuscitation"
+
+cognitive_prompts:
+  - "Could another cause explain hypotension, or is a second diagnosis present?"
+  - "Have serum tryptase samples been obtained for confirmation?"
+  - "Is there a need for prolonged observation for biphasic reaction?"
+
+contraindications_notes:
+  - "Avoid beta-blockers during active anaphylaxis unless directed by specialist"
+  - "Exercise caution with colloids that may exacerbate reactions"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

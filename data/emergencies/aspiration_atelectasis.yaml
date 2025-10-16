@@ -1,0 +1,60 @@
+meta:
+  id: aspiration_atelectasis
+  title: "Aspiration / Atelectasis"
+  parent: airway_respiratory
+  aliases:
+    - "Aspiration pneumonitis"
+  keywords:
+    - "gastric contents"
+    - "lung collapse"
+    - "perioperative aspiration"
+  related_topics:
+    - hypoxemia
+    - bronchospasm
+  priority: 0.7
+  version: "2025-10-15"
+
+summary: >
+  Inhalation of gastric contents or collapse of alveolar units leading to
+  impaired oxygenation, inflammatory response, and increased risk of pneumonia.
+
+signals:
+  - "Witnessed regurgitation or particulate matter in the airway"
+  - "Sudden hypoxemia with coarse breath sounds"
+  - "Radiographic or ultrasound evidence of dependent opacities"
+
+red_flags:
+  - "Hemodynamic instability suggesting simultaneous airway obstruction"
+  - "Progressive infiltrates despite supportive care"
+
+primary_differential:
+  - "Bronchospasm"
+  - "Pulmonary edema"
+  - "Pneumonitis"
+  - "Atelectasis from mucus plugging"
+
+first_checks:
+  - "Position head down with suction to clear oropharynx"
+  - "Secure airway and provide 100% oxygen"
+  - "Evaluate need for bronchoscopy or lavage per protocol"
+
+cognitive_prompts:
+  - "Could prophylactic antibiotics or steroids be indicated per guidelines?"
+  - "Would lung recruitment maneuvers improve atelectasis without injury?"
+  - "Is gastric drainage adequate to prevent recurrent aspiration?"
+
+contraindications_notes:
+  - "Avoid routine instillation of neutralizing agents into the airway"
+  - "Apply recruitment carefully to prevent barotrauma in injured lungs"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

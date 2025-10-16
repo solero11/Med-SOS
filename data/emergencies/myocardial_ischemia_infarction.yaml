@@ -1,0 +1,62 @@
+meta:
+  id: myocardial_ischemia_infarction
+  title: "Myocardial Ischemia / Infarction"
+  parent: circulatory_cardiovascular
+  aliases:
+    - "Intraoperative MI"
+  keywords:
+    - "ischemia"
+    - "ST changes"
+    - "cardiac event"
+  related_topics:
+    - hypotension_intraop
+    - cardiac_arrest
+    - tachycardia_unstable
+  priority: 0.8
+  version: "2025-10-15"
+
+summary: >
+  Acute coronary perfusion mismatch presenting with ECG changes, hemodynamic
+  instability, or biomarker elevation that requires rapid recognition and coordination
+  with cardiology and surgical teams.
+
+signals:
+  - "New ST-segment elevation or depression on arterial line tracing or ECG"
+  - "Unexplained hypotension, arrhythmia, or wall motion abnormality"
+  - "Rising lactate or cardiac biomarkers postoperatively"
+
+red_flags:
+  - "Persistent ischemia despite optimization of oxygen supply and demand"
+  - "Transition to ventricular arrhythmias or cardiogenic shock"
+
+primary_differential:
+  - "Supply-demand mismatch (tachycardia, hypotension, anemia)"
+  - "Coronary thrombosis or spasm"
+  - "Air or thrombotic embolism"
+  - "Mechanical obstruction (valvular or graft issues)"
+
+first_checks:
+  - "Verify ECG leads and rule out artifact"
+  - "Optimize hemodynamics, oxygenation, and ventilation"
+  - "Consult cardiology for potential catheterization or thrombolysis"
+
+cognitive_prompts:
+  - "Could surgical manipulation or embolism be limiting coronary flow?"
+  - "Is there a reversible trigger elevating myocardial oxygen demand?"
+  - "Would TEE or intraoperative imaging clarify regional wall motion?"
+
+contraindications_notes:
+  - "Avoid excessive tachycardia or hypertension from inadequate analgesia"
+  - "Use caution with beta-blockade if profound hypotension present"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

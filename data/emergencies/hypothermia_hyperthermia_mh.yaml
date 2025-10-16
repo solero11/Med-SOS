@@ -1,0 +1,61 @@
+meta:
+  id: hypothermia_hyperthermia_mh
+  title: "Hypothermia / Hyperthermia (incl. Malignant Hyperthermia)"
+  parent: allergic_drug_metabolic
+  aliases:
+    - "Perioperative temperature crisis"
+  keywords:
+    - "malignant hyperthermia"
+    - "hyperthermia"
+    - "hypothermia"
+  related_topics:
+    - electrolyte_disturbances
+    - cardiac_arrest
+  priority: 0.85
+  version: "2025-10-15"
+
+summary: >
+  Dangerous deviations in body temperature, including malignant hyperthermia,
+  that affect metabolic rate, coagulation, and organ function and demand specific therapies.
+
+signals:
+  - "Rapid rise in end-tidal CO2 and muscle rigidity"
+  - "Core temperature below 35°C or above 39°C"
+  - "Metabolic acidosis, hyperkalemia, or arrhythmias"
+
+red_flags:
+  - "Persistent hypercarbia despite increased minute ventilation"
+  - "Myoglobinuria or renal injury markers"
+
+primary_differential:
+  - "Malignant hyperthermia"
+  - "Sepsis"
+  - "Thyrotoxic crisis"
+  - "Overheating from warming devices"
+  - "Hypothermia from exposure or massive transfusion"
+
+first_checks:
+  - "Stop triggering agents and call MH hotline if suspected"
+  - "Administer dantrolene per protocol for malignant hyperthermia"
+  - "Initiate active warming or cooling strategies as appropriate"
+
+cognitive_prompts:
+  - "Have labs been drawn to monitor electrolytes and CK levels?"
+  - "Could other causes like sepsis or thyroid storm better explain the picture?"
+  - "Is ICU transfer required for ongoing temperature management?"
+
+contraindications_notes:
+  - "Avoid calcium channel blockers during dantrolene therapy"
+  - "Prevent rapid temperature shifts that destabilize hemodynamics"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

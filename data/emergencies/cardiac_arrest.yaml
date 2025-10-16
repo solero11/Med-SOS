@@ -1,0 +1,65 @@
+meta:
+  id: cardiac_arrest
+  title: "Cardiac Arrest (Asystole / VF / VT / PEA)"
+  parent: circulatory_cardiovascular
+  aliases:
+    - "Perioperative ACLS"
+  keywords:
+    - "cardiac arrest"
+    - "ACLS"
+    - "resuscitation"
+  related_topics:
+    - bradycardia_unstable_asystole_pea
+    - tachycardia_unstable
+    - hypotension_intraop
+  priority: 1.0
+  version: "2025-10-15"
+
+summary: >
+  Sudden loss of effective cardiac output requiring immediate initiation of
+  ACLS with simultaneous search for reversible causes tailored to the operative setting.
+
+signals:
+  - "Loss of arterial waveform or pulse oximetry signal"
+  - "ECG showing asystole, pulseless VT/VF, or organized rhythm without pulse"
+  - "Capnography drop indicating loss of perfusion"
+
+red_flags:
+  - "Failure to achieve return of spontaneous circulation after ACLS cycles"
+  - "Unidentified reversible causes among the Hs and Ts"
+
+primary_differential:
+  - "Hypovolemia or hemorrhage"
+  - "Hypoxia"
+  - "Hydrogen ion (acidosis)"
+  - "Electrolyte shift (hypo/hyperkalemia, hypocalcemia)"
+  - "Hypothermia"
+  - "Tension pneumothorax"
+  - "Cardiac tamponade"
+  - "Thrombosis or massive embolism"
+
+first_checks:
+  - "Call for help, start chest compressions, and follow ACLS algorithm"
+  - "Ensure 100% oxygen delivery and confirm advanced airway placement"
+  - "Assign team roles and document timing of interventions"
+
+cognitive_prompts:
+  - "Have reversible Hs and Ts been systematically addressed?"
+  - "Would ultrasound or TEE help identify the underlying cause?"
+  - "Is ECMO or specialized support indicated if arrest persists?"
+
+contraindications_notes:
+  - "Pause compressions only for rhythm checks or life-saving interventions"
+  - "Coordinate with surgical team regarding ongoing operative considerations"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

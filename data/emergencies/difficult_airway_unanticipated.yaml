@@ -1,0 +1,60 @@
+meta:
+  id: difficult_airway_unanticipated
+  title: "Difficult Airway — Unanticipated"
+  parent: airway_respiratory
+  aliases:
+    - "Unexpected difficult laryngoscopy"
+  keywords:
+    - "difficult intubation"
+    - "airway management"
+    - "fiberoptic backup"
+  related_topics:
+    - failed_airway
+    - hypoxemia
+  priority: 0.8
+  version: "2025-10-15"
+
+summary: >
+  Unforeseen challenges with mask ventilation or tracheal intubation that
+  threaten oxygenation and require structured escalation and backup plans.
+
+signals:
+  - "Repeated grade 3–4 views despite optimal positioning"
+  - "Difficult mask ventilation with rising airway pressures"
+  - "Desaturation despite airway adjuncts"
+
+red_flags:
+  - "Rapidly dropping oxygen saturation below 90%"
+  - "Airway bleeding, edema, or trauma developing during attempts"
+
+primary_differential:
+  - "Anatomical variation"
+  - "Inadequate positioning or muscle relaxation"
+  - "Equipment failure or inappropriate device size"
+  - "Unrecognized airway pathology"
+
+first_checks:
+  - "Pause and optimize position, external laryngeal manipulation, and blades"
+  - "Call for assistance and prepare advanced airway devices"
+  - "Consider awakening patient if oxygenation remains adequate"
+
+cognitive_prompts:
+  - "Would a supraglottic airway provide safe oxygenation while regrouping?"
+  - "Should you switch operators or techniques before additional trauma occurs?"
+  - "Have you prepared for a surgical airway if attempts continue to fail?"
+
+contraindications_notes:
+  - "Limit attempts to avoid airway swelling and bleeding"
+  - "Reassess neuromuscular blockade before another attempt"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

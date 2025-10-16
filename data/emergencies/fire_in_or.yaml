@@ -1,0 +1,59 @@
+meta:
+  id: fire_in_or
+  title: "Fire in the Operating Room"
+  parent: special_situations
+  aliases:
+    - "OR fire"
+  keywords:
+    - "fire triad"
+    - "airway fire"
+    - "surgical fire"
+  related_topics:
+    - oxygen_supply_failure
+    - power_equipment_failure
+  priority: 0.85
+  version: "2025-10-15"
+
+summary: >
+  Ignition involving oxidizers, fuels, and ignition sources in the operating
+  room that requires rapid suppression, patient protection, and oxygen control.
+
+signals:
+  - "Visual flames or smoke near surgical field or airway"
+  - "Burning smell or alarms from equipment"
+  - "End-tidal oxygen reading elevated despite target levels"
+
+red_flags:
+  - "Airway fire with ongoing oxygen flow"
+  - "Patient burns requiring immediate cooling and assessment"
+
+primary_differential:
+  - "Airway fire"
+  - "Surgical field fire"
+  - "Equipment ignition"
+
+first_checks:
+  - "Stop the procedure and announce fire"
+  - "Disconnect oxygen/oxidizer sources if safe"
+  - "Extinguish flames with saline or CO2 extinguisher per location"
+
+cognitive_prompts:
+  - "Has the oxygen concentration been minimized to reduce recurrence?"
+  - "Do we need to inspect airway or tissues for hidden damage?"
+  - "Could equipment malfunction require biomedical evaluation before reuse?"
+
+contraindications_notes:
+  - "Avoid reopening oxygen quickly without confirming fire is out"
+  - "Do not use water on electrical fires; follow facility protocol"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"

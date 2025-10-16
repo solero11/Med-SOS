@@ -1,0 +1,25 @@
+case_id: tension_pneumo
+title: "Laparoscopic case complicated by tension pneumothorax"
+duration_seconds: 274
+phases:
+  - name: phase_1_onset
+    range_seconds: [0, 90]
+    summary: Early clues and subtle ventilator changes.
+  - name: phase_2_decomp
+    range_seconds: [90, 210]
+    summary: Rapid decompensation with falling sats and rising pressures.
+  - name: phase_3_diagnosis
+    range_seconds: [210, 240]
+    summary: Diagnosis confirmed and treatment underway.
+  - name: phase_4_treatment
+    range_seconds: [240, 274]
+    summary: Stabilization and return to baseline monitoring.
+participants:
+  - role: anesthesiologist
+  - role: surgeon
+  - role: circulating_nurse
+  - role: scrub_tech
+tags:
+  - pneumothorax
+  - anesthesia
+  - crisis_management

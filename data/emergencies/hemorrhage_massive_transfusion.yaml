@@ -1,0 +1,61 @@
+meta:
+  id: hemorrhage_massive_transfusion
+  title: "Hemorrhage / Massive Transfusion"
+  parent: circulatory_cardiovascular
+  aliases:
+    - "Massive bleeding"
+  keywords:
+    - "hemorrhage"
+    - "transfusion protocol"
+    - "blood loss"
+  related_topics:
+    - hypotension_intraop
+    - cardiac_arrest
+    - electrolyte_disturbances
+  priority: 0.9
+  version: "2025-10-15"
+
+summary: >
+  Rapid blood loss exceeding 150 ml per minute or anticipated replacement of
+  an entire blood volume requiring coordinated resuscitation and hemostasis.
+
+signals:
+  - "High suction canister volumes or saturating sponges quickly"
+  - "Hemodynamic instability with dropping hematocrit"
+  - "Need for rapid transfusion of multiple units"
+
+red_flags:
+  - "Coagulopathy, hypocalcemia, or hypothermia developing during resuscitation"
+  - "Failure to respond to transfusion and surgical control efforts"
+
+primary_differential:
+  - "Surgical bleeding site"
+  - "Coagulopathy"
+  - "Dilutional thrombocytopenia"
+  - "Occult bleeding (retroperitoneal, thoracic)"
+
+first_checks:
+  - "Activate massive transfusion protocol and notify blood bank"
+  - "Ensure large-bore IV or rapid infuser access"
+  - "Warm fluids and monitor temperature, calcium, acid-base status"
+
+cognitive_prompts:
+  - "Have laboratory parameters guided the component therapy ratios?"
+  - "Is surgical or interventional control progressing adequately?"
+  - "Could adjuncts like TXA or cell salvage support hemostasis?"
+
+contraindications_notes:
+  - "Avoid uncrossmatched blood if time allows for type-specific products"
+  - "Monitor for transfusion reactions and electrolyte shifts closely"
+
+update_conflicts:
+  added_from_sources: []
+  removed_from_sources: []
+  unresolved_conflicts: []
+
+provenance:
+  last_sources:
+    - stanford-emergency-manual.pdf
+    - EmergencyManual-PRINT.pdf
+    - 12. anaesthesia-emergencies.pdf
+  merged_on: "2025-10-15"
