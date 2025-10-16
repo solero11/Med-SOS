@@ -1,3 +1,32 @@
+
+# Python virtual environments
 venv/
+
+# Compiled files and caches
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build outputs
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# IDE/project files
+.vscode/
+.idea/
+
+# Local/test artifacts
+_validation/audio/
+_validation/orchestrator_metrics.jsonl
+
+# User secrets or local config (add as needed)
 .env
+*.env
