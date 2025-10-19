@@ -7,13 +7,20 @@ question prompts so that the tests remain offline and deterministic.
 """
 from __future__ import annotations
 
+import os
+import time
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Dict, Iterable, List, Optional, Sequence, Union
+from datetime import datetime
 
 import yaml
 
 from src.schema.yaml_schema import EmergencyYAML
+from src.utils.generate_sbar_report import generate_progressive_sbar_log, generate_sbar_report
+from src.utils.llm_runtime import LMStudioRuntime
+from src.utils.logger import log_turn_metric
 from src.utils.sbar_builder import SBAR
 from src.utils.sbar_monitor import SBARMonitor, default_update_strategy
 from src.utils.scene_player import SceneEvent, play_scene
@@ -33,6 +40,219 @@ QuestionFn = Callable[
     [SBAR, SceneEvent, Sequence[EmergencyYAML], Sequence[SBARSnapshot]],
     Union[str, Sequence[str]],
 ]
+
+
+class SBARChaosHarness:
+    """
+    Minimal chaos harness that replays dialogue JSONL files through the SBAR generator.
+    """
+
+    def __init__(
+        self,
+        dialogue_path: Path | str = Path("_validation/test_dialogue.jsonl"),
+        *,
+        output_dir: Path | str = Path("_validation/sbar_chaos_logs"),
+        retain_runs: int = 5,
+    ) -> None:
+        self.dialogue_path = Path(dialogue_path)
+        self.output_dir = Path(output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.archive_dir = self.output_dir / "archive"
+        self.retain_runs = max(int(retain_runs), 0)
+
+    def run(
+        self,
+        *,
+        iters: int = 1,
+        with_llm: bool = True,
+        runtime: Optional[LMStudioRuntime] = None,
+        scene_path: Optional[Path | str] = None,
+    ) -> List[Dict[str, object]]:
+        """
+        Execute the chaos harness for the provided number of iterations.
+        """
+        if iters < 1:
+            raise ValueError("iters must be >= 1")
+        scene_path = Path(scene_path) if scene_path else self.dialogue_path
+        if not scene_path.exists():
+            raise FileNotFoundError(f"Dialogue JSONL not found: {scene_path}")
+
+        runtime_obj = runtime or LMStudioRuntime(
+            base_url=os.getenv("LLM_API_URL", "http://127.0.0.1:1234/v1/chat/completions")
+        )
+        runtime_available = runtime_obj.is_available() if with_llm else False
+        effective_with_llm = bool(with_llm and runtime_available)
+
+        scene_name = scene_path.stem
+        scene_dir = self.output_dir / scene_name
+        scene_dir.mkdir(parents=True, exist_ok=True)
+
+        run_started_at = datetime.utcnow()
+        run_id, run_dir = self._prepare_run_directory(scene_dir)
+        run_started_display = run_started_at.strftime("%Y-%m-%d %H:%M:%SZ")
+        aggregated_path = run_dir / "summary.md"
+        header_lines = [
+            f"# SBAR Chaos Log — {scene_name}",
+            "",
+            f"_Run started: {run_started_display}_",
+            "",
+        ]
+        aggregated_path.write_text("\n".join(header_lines), encoding="utf-8")
+
+        results: List[Dict[str, object]] = []
+
+        for iteration in range(1, iters + 1):
+            tmp_output = run_dir / f".{scene_name}_{run_id}_iter{iteration:02d}.md"
+            start = time.perf_counter()
+            try:
+                result = generate_sbar_report(
+                    scene_path,
+                    tmp_output,
+                    llm=runtime_obj if effective_with_llm else None,
+                    with_llm=effective_with_llm,
+                )
+                progress_path = run_dir / "progress.md"
+                progress_result = generate_progressive_sbar_log(
+                    scene_path,
+                    progress_path,
+                    runtime=runtime_obj if effective_with_llm else None,
+                    with_llm=effective_with_llm,
+                    run_id=run_id,
+                    iteration=iteration,
+                )
+            except Exception as exc:  # pragma: no cover - surfaced in tests via failure
+                latency = round(time.perf_counter() - start, 3)
+                log_turn_metric(
+                    "sbar_chaos",
+                    ok=False,
+                    latency_sec=latency,
+                    extra={
+                        "scene": scene_name,
+                        "iteration": iteration,
+                        "run_id": run_id,
+                        "with_llm": effective_with_llm,
+                        "error": str(exc),
+                    },
+                )
+                raise
+
+            elapsed = time.perf_counter() - start
+            reported_latency = float(result.get("latency", 0.0)) + float(
+                progress_result.get("latency", 0.0) or 0.0
+            )
+            latency = round(reported_latency if reported_latency > 0 else elapsed, 3)
+            tokens = int(result.get("tokens", 0)) + int(progress_result.get("tokens", 0) or 0)
+            ok = bool(result.get("ok", False))
+            actual_with_llm = bool(result.get("with_llm", False) or progress_result.get("llm_used", False))
+            raw_response = result.get("raw_response")
+            progress_path_str = progress_result.get("progress_path")
+            snapshot_count = len(progress_result.get("snapshots", []))
+            scene_summary = progress_result.get("scene_summary") or {}
+            scene_summary_markdown = scene_summary.get("markdown")
+            scene_summary_tokens = int(scene_summary.get("tokens", 0) or 0)
+            scene_summary_latency = float(scene_summary.get("latency", 0.0) or 0.0)
+            scene_summary_with_llm = bool(scene_summary.get("with_llm"))
+
+            report_content = Path(result["output_path"]).read_text(encoding="utf-8")
+            with aggregated_path.open("a", encoding="utf-8") as handle:
+                handle.write(f"## Iteration {iteration} — {run_started_display}\n\n")
+                handle.write(report_content.strip())
+                handle.write("\n\n")
+                if scene_summary_markdown:
+                    handle.write(scene_summary_markdown.strip())
+                    handle.write("\n\n")
+                handle.write("---\n\n")
+
+            if tmp_output.exists():
+                tmp_output.unlink()
+
+            log_turn_metric(
+                "sbar_chaos",
+                ok=ok,
+                latency_sec=latency,
+                extra={
+                    "scene": scene_name,
+                    "iteration": iteration,
+                    "run_id": run_id,
+                    "with_llm": actual_with_llm,
+                    "tokens": tokens,
+                    "report_path": str(aggregated_path),
+                    "llm_preview": (str(raw_response)[:160] if raw_response else None),
+                    "progress_path": str(progress_path_str) if progress_path_str else None,
+                    "snapshots_logged": snapshot_count,
+                    "run_dir": str(run_dir),
+                    "run_started": run_started_display,
+                },
+            )
+
+            log_turn_metric(
+                "sbar_scene_summary",
+                ok=True,
+                latency_sec=scene_summary_latency,
+                extra={
+                    "scene": scene_name,
+                    "iteration": iteration,
+                    "run_id": run_id,
+                    "with_llm": scene_summary_with_llm,
+                    "tokens": scene_summary_tokens,
+                    "summary_path": str(aggregated_path),
+                    "progress_path": str(progress_path_str) if progress_path_str else None,
+                    "run_dir": str(run_dir),
+                    "run_started": run_started_display,
+                },
+            )
+
+            results.append(
+                {
+                    "scene": scene_name,
+                    "iteration": iteration,
+                    "run_id": run_id,
+                    "with_llm": actual_with_llm,
+                    "latency": latency,
+                    "tokens": tokens,
+                    "ok": ok,
+                    "report_path": str(aggregated_path),
+                    "progress_path": str(progress_path_str) if progress_path_str else None,
+                    "snapshots": snapshot_count,
+                    "run_dir": str(run_dir),
+                    "run_started": run_started_display,
+                    "scene_summary_tokens": scene_summary_tokens,
+                    "scene_summary_latency": scene_summary_latency,
+                    "scene_summary_with_llm": scene_summary_with_llm,
+                }
+            )
+
+        self._enforce_retention(scene_dir)
+
+        return results
+
+    def _prepare_run_directory(self, scene_dir: Path) -> tuple[str, Path]:
+        scene_dir.mkdir(parents=True, exist_ok=True)
+        timestamp = datetime.utcnow().strftime("%Y%m%d-%H%M%SZ")
+        run_id = timestamp
+        run_dir = scene_dir / run_id
+        counter = 2
+        while run_dir.exists():
+            run_id = f"{timestamp}-{counter:02d}"
+            run_dir = scene_dir / run_id
+            counter += 1
+        run_dir.mkdir(parents=True, exist_ok=True)
+        return run_id, run_dir
+
+    def _enforce_retention(self, scene_dir: Path) -> None:
+        if self.retain_runs <= 0:
+            return
+        run_dirs = sorted(
+            [path for path in scene_dir.iterdir() if path.is_dir()],
+            key=lambda path: path.stat().st_mtime,
+            reverse=True,
+        )
+        for old_dir in run_dirs[self.retain_runs :]:
+            archive_target = self.archive_dir / scene_dir.name / old_dir.name
+            archive_target.parent.mkdir(parents=True, exist_ok=True)
+            if archive_target.exists():
+                shutil.rmtree(archive_target)
+            shutil.move(str(old_dir), str(archive_target))
 
 
 @dataclass
@@ -283,4 +503,11 @@ class SBARSceneHarness:
         return index
 
 
-__all__ = ["SBARSceneHarness", "HarnessResult", "ChangeDetectorFn", "AssessmentFn", "QuestionFn"]
+__all__ = [
+    "SBARChaosHarness",
+    "SBARSceneHarness",
+    "HarnessResult",
+    "ChangeDetectorFn",
+    "AssessmentFn",
+    "QuestionFn",
+]

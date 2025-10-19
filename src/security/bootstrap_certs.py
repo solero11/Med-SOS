@@ -62,7 +62,7 @@ def bootstrap_security(force: bool = False) -> str:
             )
         )
 
-    print(f"Token → {token}\nCerts in {SECURITY_DIR}")
+    print(f"Token -> {token}\nCerts in {SECURITY_DIR}")
     return token
 
 

@@ -2,6 +2,7 @@ import asyncio
 import os
 import statistics
 import time
+from pathlib import Path
 
 import httpx
 import pytest
@@ -12,10 +13,15 @@ WAV_PATH = os.getenv("STRESS_WAV_PATH", "_validation/test_ping.wav")
 
 
 async def _turn_text(index: int) -> float:
+    token_path = Path("_validation/security/sos_token.txt")
+    headers = {}
+    if token_path.exists():
+        headers['Authorization'] = f"Bearer {token_path.read_text(encoding='utf-8').strip()}"
+
     payload = {"text": f"Trial {index}: BP 80/40, HR 130. Next action?"}
-    async with httpx.AsyncClient(timeout=15) as client:
+    async with httpx.AsyncClient(timeout=15, verify=False) as client:
         start = time.time()
-        response = await client.post(f"{ORCH_URL}/turn_text", json=payload)
+        response = await client.post(f"{ORCH_URL}/turn_text", json=payload, headers=headers)
         latency = time.time() - start
     assert response.status_code == 200, f"/turn_text #{index} failed: {response.text}"
     return latency
@@ -41,13 +47,14 @@ async def test_stress_recovery_turn_audio():
     latencies = []
     audio_iterations = max(1, ITERATIONS // 2)
     for i in range(audio_iterations):
-        async with httpx.AsyncClient(timeout=30) as client, open(WAV_PATH, "rb") as handle:
-            start = time.time()
-            response = await client.post(
-                f"{ORCH_URL}/turn",
-                files={"audio": ("stress.wav", handle, "audio/wav")},
-            )
-            latency = time.time() - start
+        async with httpx.AsyncClient(timeout=30, verify=False) as client:
+            with open(WAV_PATH, "rb") as handle:
+                start = time.time()
+                response = await client.post(
+                    f"{ORCH_URL}/turn",
+                    files={"audio": ("stress.wav", handle, "audio/wav")},
+                )
+                latency = time.time() - start
         assert response.status_code == 200, f"/turn #{i} failed: {response.text}"
         latencies.append(latency)
         await asyncio.sleep(1.0)

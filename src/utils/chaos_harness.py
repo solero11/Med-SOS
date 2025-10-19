@@ -124,20 +124,28 @@ def make_llm_functions(api_url, system_prompt, model_name, temperature=0.7):
 
 
 if __name__ == "__main__":
-    print("--- ChaosHarness Real LLM Mode ---")
-    # Set your LLM API URL, model, and system prompt here:
-    api_url = os.environ.get("LLM_API_URL", "http://100.111.223.74:1234/v1/chat/completions")
-    model_name = os.environ.get("LLM_MODEL", "medicine-llm-13b")
-    system_prompt = os.environ.get("LLM_SYSTEM_PROMPT", "You are a clinical reasoning assistant. You never give orders, only ask questions. You do not diagnose, prescribe, or recommend. You encourage physicians to reflect on possibilities. You may retrieve supporting guidelines, references, or YAML protocols.")
-    temperature = float(os.environ.get("LLM_TEMPERATURE", "0.7"))
-    knobs = ChaosKnobs()
-    llm_gt, llm_u, extractor = make_llm_functions(api_url, system_prompt, model_name, temperature)
-    h = ChaosHarness(llm_gt=llm_gt, llm_u=llm_u, extractor=extractor, knobs=knobs)
+    demo_mode = os.environ.get("CHAOS_DEMO_MODE", "false").lower() == "true"
+    print("--- ChaosHarness Mode ---")
+    if demo_mode:
+        print("[DEMO MODE] Using stub LLM functions for local testing.")
+        def stub_llm(prompt):
+            return '{"case_id": "demo-case", "timeline": [{"t": "00:01", "speaker": "clinician", "event": "SOS"}], "sbar_goals": {"situation": "Demo", "background": "Demo", "assessment": "Demo", "recommendation": "Demo"}}'
+        knobs = ChaosKnobs()
+        h = ChaosHarness(llm_gt=stub_llm, llm_u=stub_llm, extractor=None, knobs=knobs)
+    else:
+        # Set your LLM API URL, model, and system prompt here:
+        api_url = os.environ.get("LLM_API_URL", "http://100.111.223.74:1234/v1/chat/completions")
+        model_name = os.environ.get("LLM_MODEL", "medicine-llm-13b")
+        system_prompt = os.environ.get("LLM_SYSTEM_PROMPT", "You are a clinical reasoning assistant. You never give orders, only ask questions. You do not diagnose, prescribe, or recommend. You encourage physicians to reflect on possibilities. You may retrieve supporting guidelines, references, or YAML protocols.")
+        temperature = float(os.environ.get("LLM_TEMPERATURE", "0.7"))
+        knobs = ChaosKnobs()
+        llm_gt, llm_u, extractor = make_llm_functions(api_url, system_prompt, model_name, temperature)
+        h = ChaosHarness(llm_gt=llm_gt, llm_u=llm_u, extractor=extractor, knobs=knobs)
     case = h.generate_case()
     print("Ground truth case:", json.dumps(case, indent=2))
     telemetry = h.stream(case)
     print("\n--- Telemetry (last 3 steps) ---")
     for snap in telemetry[-3:]:
         print(json.dumps(snap, indent=2))
-    print("\nDone. Real LLM test complete!")
+    print("\nDone. ChaosHarness test complete!")
 

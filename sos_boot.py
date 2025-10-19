@@ -121,7 +121,8 @@ def main() -> int:
         ("TTS", "src.tts.app:app", TTS_PORT, None),
         ("Orchestrator", "src.orchestrator.app:create_app", ORCH_PORT, ssl_pair),
     ]
-    processes: Dict[str, subprocess.Popen] = {}\n    mdns = None
+    processes: Dict[str, subprocess.Popen] = {}
+    mdns = None
 
     try:
         print("Launching SOS services...")

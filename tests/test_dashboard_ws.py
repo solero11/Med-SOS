@@ -16,15 +16,13 @@ def test_dashboard_websocket_stream():
     METRICS_PATH.parent.mkdir(parents=True, exist_ok=True)
     TOKEN_PATH.parent.mkdir(parents=True, exist_ok=True)
     TOKEN_PATH.write_text('test-admin-token', encoding='utf-8')
-    METRICS_PATH.write_text(json.dumps({'event': 'turn_text', 'ok': True}) + '
-', encoding='utf-8')
+    METRICS_PATH.write_text(json.dumps({'event': 'turn_text', 'ok': True}) + '\n', encoding='utf-8')
 
     app = create_app()
     client = TestClient(app)
     with client.websocket_connect('/ws/metrics?token=test-admin-token') as websocket:
         with METRICS_PATH.open('a', encoding='utf-8') as handle:
-            handle.write(json.dumps({'event': 'turn_audio', 'ok': True}) + '
-')
+            handle.write(json.dumps({'event': 'turn_audio', 'ok': True}) + '\n')
         time.sleep(1.1)
         message = websocket.receive_text()
         payload = json.loads(message)

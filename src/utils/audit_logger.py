@@ -36,5 +36,4 @@ def append_audit(event: str, user: str, payload: Dict[str, Any]) -> None:
     digest = hashlib.sha256(json.dumps(entry, sort_keys=True).encode()).hexdigest()
     entry['hash'] = digest
     with AUDIT_FILE.open('a', encoding='utf-8') as handle:
-        handle.write(json.dumps(entry) + '
-')
+        handle.write(json.dumps(entry) + '\n')

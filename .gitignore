@@ -30,3 +30,4 @@ _validation/orchestrator_metrics.jsonl
 # User secrets or local config (add as needed)
 .env
 *.env
+node_modules

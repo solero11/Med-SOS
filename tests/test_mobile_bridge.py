@@ -1,4 +1,5 @@
 from __future__ import annotations
+import pytest
 
 import asyncio
 import statistics
@@ -10,6 +11,9 @@ TOKEN_PATH = Path("_validation/security/sos_token.txt")
 SECURE_MODE = TOKEN_PATH.exists()
 ORCH_URL = "https://127.0.0.1:8000" if SECURE_MODE else "http://127.0.0.1:8000"
 ITERATIONS = 10
+
+
+pytestmark = pytest.mark.asyncio
 
 
 async def _turn_text(session: aiohttp.ClientSession, index: int, headers: dict[str, str]) -> float:

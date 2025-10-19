@@ -1,0 +1,53 @@
+INFO:     Started server process [12664]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started server process [36276]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+WARNING:  Invalid HTTP request received.
+INFO:     Started server process [21952]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started server process [5756]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started server process [33540]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2025-10-17 05:23:37 | ERROR   | sos.orchestrator | LLM request failed: Client error '401 Unauthorized' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-10-17 05:24:36 | ERROR   | sos.orchestrator | LLM request failed: Client error '401 Unauthorized' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-10-17 05:24:36 | ERROR   | sos.orchestrator | LLM request failed: Client error '401 Unauthorized' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2025-10-17 05:24:36 | ERROR   | sos.orchestrator | LLM request failed: Client error '401 Unauthorized' for url 'https://openrouter.ai/api/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+INFO:     Started server process [39036]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+WARNING:  Invalid HTTP request received.
+INFO:     Started server process [33528]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2025-10-17 05:59:39 | ERROR   | sos.orchestrator | ASR request failed: Server error '504 Gateway Timeout' for url 'http://127.0.0.1:9001/asr'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504
+2025-10-17 05:59:47 | ERROR   | sos.orchestrator | ASR request failed: All connection attempts failed
+INFO:     Started server process [21212]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2025-10-17 06:00:16 | ERROR   | sos.orchestrator | ASR request failed: Server error '503 Service Unavailable' for url 'http://127.0.0.1:9001/asr'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+2025-10-17 06:00:22 | ERROR   | sos.orchestrator | ASR request failed: Server error '503 Service Unavailable' for url 'http://127.0.0.1:9001/asr'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+2025-10-17 06:34:10 | ERROR   | sos.orchestrator | ASR request failed: Server error '504 Gateway Timeout' for url 'http://127.0.0.1:9001/asr'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504
+2025-10-17 06:34:18 | ERROR   | sos.orchestrator | ASR request failed: Server error '504 Gateway Timeout' for url 'http://127.0.0.1:9001/asr'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504

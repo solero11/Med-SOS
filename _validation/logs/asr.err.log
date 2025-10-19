@@ -1,0 +1,38 @@
+INFO:     Started server process [22908]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+ERROR:    [Errno 10048] error while attempting to bind on address ('127.0.0.1', 9001): only one usage of each socket address (protocol/network address/port) is normally permitted
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Started server process [17552]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9001 (Press CTRL+C to quit)
+INFO:     Started server process [35504]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9001 (Press CTRL+C to quit)
+INFO:     Started server process [26148]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9001 (Press CTRL+C to quit)
+INFO:     Started server process [25760]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9001 (Press CTRL+C to quit)
+INFO:     Started server process [27776]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9001 (Press CTRL+C to quit)
+2025-10-17 06:00:16 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:22 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured
+2025-10-17 06:00:55 | ERROR   | sos.asr | ASR request received but ASR_FORWARD_URL is not configured

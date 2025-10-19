@@ -39,6 +39,13 @@ SECURITY_TOKEN_PATH = Path("_validation/security/sos_token.txt")
 SECURE_MODE = SECURITY_TOKEN_PATH.exists()
 UPDATES_MANIFEST = Path("updates/manifest.json")
 
+CLARIFYING_PROMPT = "Could you share more clinical detail so I can narrow the differential?"
+FALLBACK_MESSAGE = (
+    "I am not sure how to help, but continue to provide more information as I might find relevant "
+    "clinical information to help you."
+)
+_MIN_WORDS_FOR_CONFIDENCE = 3
+
 router = APIRouter()
 
 
@@ -84,7 +91,7 @@ app = FastAPI(
 
 def create_app() -> FastAPI:
     """Convenience factory for uvicorn dotted-path loading."""
-    included = getattr(app.state, "included_routers", set())
+    included = getattr(app.state, "included_router_ids", set())
     if not getattr(app.state, "static_mounted", False):
         app.mount("/static", StaticFiles(directory="static"), name="static")
         app.state.static_mounted = True
@@ -92,10 +99,11 @@ def create_app() -> FastAPI:
         app.mount("/metrics", make_asgi_app())
         app.state.metrics_mounted = True
     for subrouter in (router, pairing.router, dashboard.router):
-        if subrouter not in included:
+        key = id(subrouter)
+        if key not in included:
             app.include_router(subrouter)
-            included.add(subrouter)
-    app.state.included_routers = included
+            included.add(key)
+    app.state.included_router_ids = included
     return app
 
 
@@ -152,10 +160,13 @@ async def turn(
     try:
         audio_bytes = await audio.read()
         transcript_payload = await _call_asr(request.app.state.http, audio_bytes, audio.filename, language)
-        transcript = transcript_payload.get("text", "").strip()
-
+        transcript = (transcript_payload.get("text") or "").strip()
         messages = _parse_history(history)
-        response_text = await _call_llm(request.app.state.http, transcript, messages)
+        response_text, clarifying, fallback_triggered = await _generate_response(
+            request.app.state.http,
+            transcript,
+            messages,
+        )
 
         if enable_tts and response_text:
             audio_format, audio_url = await _call_tts(request, request.app.state.http, response_text)
@@ -168,11 +179,26 @@ async def turn(
             "turn_audio",
             ok=True,
             latency_sec=total,
-            extra={"reply_len": len(response_text or ""), "wav_count": wav_count, "secure": SECURE_MODE},
+            extra={
+                "reply_len": len(response_text or ""),
+                "wav_count": wav_count,
+                "secure": SECURE_MODE,
+                "clarifying": clarifying,
+                "fallback": fallback_triggered,
+            },
         )
-        append_audit("turn_audio", request.state.user.get("sub", "unknown"), {"reply_len": len(response_text or ""), "wav_count": wav_count})
+        append_audit(
+            "turn_audio",
+            request.state.user.get("sub", "unknown"),
+            {
+                "reply_len": len(response_text or ""),
+                "wav_count": wav_count,
+                "clarifying": clarifying,
+                "fallback": fallback_triggered,
+            },
+        )
 
-        payload = 
+        payload = {
             "transcript": transcript,
             "response_text": response_text,
             "reply": response_text,
@@ -180,6 +206,8 @@ async def turn(
             "tts_url": audio_url,
             "audio_format": audio_format,
             "asr": transcript_payload,
+            "clarifying": clarifying,
+            "fallback": fallback_triggered,
         }
         return JSONResponse(content=payload)
     except HTTPException as exc:
@@ -203,14 +231,21 @@ async def turn(
 
 
 @app.post("/turn_text")
-async def turn_text(request: Request, _: None = Depends(require_token)) -> JSONResponse:
+async def turn_text(
+    request: Request,
+    user: dict = Depends(require_token(["clinician", "admin"]))
+) -> JSONResponse:
     start = time.time()
     transcript = ""
     try:
         payload = await _extract_turn_text_payload(request)
         transcript = payload["transcript"]
         messages = _parse_history(payload.get("history"))
-        response_text = await _call_llm(request.app.state.http, transcript, messages)
+        response_text, clarifying, fallback_triggered = await _generate_response(
+            request.app.state.http,
+            transcript,
+            messages,
+        )
 
         audio_url = None
         audio_format = None
@@ -218,11 +253,27 @@ async def turn_text(request: Request, _: None = Depends(require_token)) -> JSONR
             audio_format, audio_url = await _call_tts(request, request.app.state.http, response_text)
 
         total = time.time() - start
+        turns_counter.add(1)
+        latency_hist.record(total)
         log_turn_metric(
             event="turn_text",
             ok=True,
             latency_sec=total,
-            extra={"reply_len": len(response_text or ""), "secure": SECURE_MODE},
+            extra={
+                "reply_len": len(response_text or ""),
+                "secure": SECURE_MODE,
+                "clarifying": clarifying,
+                "fallback": fallback_triggered,
+            },
+        )
+        append_audit(
+            "turn_text",
+            user.get("sub", "unknown"),
+            {
+                "reply_len": len(response_text or ""),
+                "clarifying": clarifying,
+                "fallback": fallback_triggered,
+            },
         )
 
         payload_out = {
@@ -232,6 +283,8 @@ async def turn_text(request: Request, _: None = Depends(require_token)) -> JSONR
             "audio_url": audio_url,
             "tts_url": audio_url,
             "audio_format": audio_format,
+            "clarifying": clarifying,
+            "fallback": fallback_triggered,
         }
         return JSONResponse(content=payload_out)
     except HTTPException as exc:
@@ -241,6 +294,7 @@ async def turn_text(request: Request, _: None = Depends(require_token)) -> JSONR
             latency_sec=time.time() - start,
             extra={"error": exc.detail if hasattr(exc, "detail") else str(exc), "secure": SECURE_MODE},
         )
+        append_audit("turn_text_error", user.get("sub", "unknown"), {"error": str(exc)})
         raise
     except Exception as exc:
         log_turn_metric(
@@ -249,6 +303,7 @@ async def turn_text(request: Request, _: None = Depends(require_token)) -> JSONR
             latency_sec=time.time() - start,
             extra={"error": str(exc), "secure": SECURE_MODE},
         )
+        append_audit("turn_text_error", user.get("sub", "unknown"), {"error": str(exc)})
         raise
 
 
@@ -283,9 +338,11 @@ async def _extract_turn_text_payload(request: Request) -> Dict[str, Any]:
     if not isinstance(data, dict):
         raise HTTPException(status_code=400, detail="Invalid request payload.")
 
-    transcript = (data.get("text") or data.get("transcript") or "").strip()
-    if not transcript:
-        raise HTTPException(status_code=400, detail="Transcript must not be empty.")
+    raw_transcript = data.get("text") or data.get("transcript") or ""
+    if isinstance(raw_transcript, str):
+        transcript = raw_transcript.strip()
+    else:
+        transcript = str(raw_transcript).strip()
 
     enable_tts_raw = data.get("enable_tts", True)
     if isinstance(enable_tts_raw, str):
@@ -323,6 +380,15 @@ def _parse_history(history: Optional[Any]) -> Optional[List[Dict[str, str]]]:
         if isinstance(item, dict) and {"role", "content"} <= item.keys():
             messages.append({"role": item["role"], "content": item["content"]})
     return messages or None
+
+
+def _needs_clarification(transcript: str) -> bool:
+    stripped = transcript.strip()
+    if not stripped:
+        return True
+    if len(stripped.split()) < _MIN_WORDS_FOR_CONFIDENCE:
+        return True
+    return False
 
 
 async def _call_asr(
@@ -374,6 +440,22 @@ async def _call_llm(
     if "choices" in data and data["choices"]:
         return data["choices"][0]["message"]["content"]
     return data.get("response", "")
+
+
+async def _generate_response(
+    client: httpx.AsyncClient,
+    transcript: str,
+    history: Optional[List[Dict[str, str]]],
+) -> tuple[str, bool, bool]:
+    trimmed = transcript.strip()
+    clarifying = _needs_clarification(trimmed)
+    if clarifying:
+        return CLARIFYING_PROMPT, True, False
+
+    response_text = await _call_llm(client, trimmed, history)
+    if not response_text or not response_text.strip():
+        return FALLBACK_MESSAGE, False, True
+    return response_text, False, False
 
 
 async def _call_tts(

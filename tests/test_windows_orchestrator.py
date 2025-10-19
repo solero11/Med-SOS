@@ -79,6 +79,9 @@ def test_windows_orchestrator(tmp_path, monkeypatch):
 
     metrics_path = Path("_validation/orchestrator_metrics.jsonl")
     metrics_path.parent.mkdir(parents=True, exist_ok=True)
+    token_path = Path("_validation/security/sos_token.txt")
+    token_path.parent.mkdir(parents=True, exist_ok=True)
+    token_path.write_text("test-admin-token", encoding="utf-8")
 
     with TestClient(orchestrator_app) as client:
         client.app.state.http = StubAsyncClient()
@@ -86,6 +89,7 @@ def test_windows_orchestrator(tmp_path, monkeypatch):
         response = client.post(
             "/turn_text",
             data={"transcript": "test case", "enable_tts": "true"},
+            headers={"Authorization": "Bearer test-admin-token"},
         )
         latency = time.perf_counter() - start
 

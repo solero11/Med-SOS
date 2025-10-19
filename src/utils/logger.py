@@ -56,7 +56,13 @@ def log_turn_metric(event: str, ok: bool, latency_sec: float, extra: Optional[di
         "latency_sec": round(float(latency_sec), 3),
     }
     if extra:
-        record.update(extra)
+        for key, value in extra.items():
+            if value is None:
+                continue
+            if isinstance(value, Path):
+                record[key] = str(value)
+            else:
+                record[key] = value
     record = scrub_record(record)
     METRICS_PATH.touch(exist_ok=True)
     with METRICS_PATH.open("a", encoding="utf-8") as handle:

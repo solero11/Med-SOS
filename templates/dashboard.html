@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>SOS Admin Dashboard</title>
-    <style>
-      body { font-family: Arial, sans-serif; margin: 2rem; background: #f7f7f7; }
-      h2 { color: #333; }
-      #metrics pre { background: #fff; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1rem; }
-    </style>
+<head>
+    <meta charset="utf-8">
+    <title>SBAR Chaos Dashboard</title>
+    <link rel="stylesheet" href="/static/dashboard.css">
     <script defer src="/static/dashboard.js"></script>
-  </head>
-  <body>
-    <h2>SOS Admin Dashboard</h2>
-    <p>Append <code>?token=&lt;ADMIN_JWT&gt;</code> to this URL to authenticate.</p>
-    <div id="status">Connecting…</div>
-    <section id="summary">Loading summary...</section>
-    <div id="metrics"></div>
-  </body>
+</head>
+<body>
+    <header>
+        <h1>SBAR Chaos Runs</h1>
+        <div class="controls">
+            <button id="refresh-btn">Refresh</button>
+            <span id="last-updated">Last updated: never</span>
+        </div>
+    </header>
+    <main>
+        <section id="runs-container">
+            {% if scenes %}
+            {% for scene, records in scenes.items() %}
+            <div class="scene-block">
+                <h2>{{ scene }}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Tokens</th>
+                            <th>Latency (s)</th>
+                            <th>Snapshots</th>
+                            <th>LLM</th>
+                            <th>Files</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in records %}
+                        <tr>
+                            <td>{{ record.run }}</td>
+                            <td>{{ record.tokens }}</td>
+                            <td>{{ "%.3f"|format(record.latency) }}</td>
+                            <td>{{ record.snapshots }}</td>
+                            <td>{{ "✅" if record.with_llm else "❌" }}</td>
+                            <td>
+                                <a href="/api/run/{{ record.scene }}/{{ record.run }}/file/summary.md" target="_blank">summary.md</a>
+                                <a href="/api/run/{{ record.scene }}/{{ record.run }}/file/progress.md" target="_blank">progress.md</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No runs detected yet. Execute the SBAR chaos harness to populate this dashboard.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
 </html>

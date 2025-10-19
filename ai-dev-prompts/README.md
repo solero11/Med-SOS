@@ -65,6 +65,16 @@ To ensure methodical progress and allow for verification, we'll use `process-tas
 
     ```text
     Please start on task 1.1 and use @process-task-list.md
+
+    ## Accessibility and Hands-Free Usage Notes
+
+    - The SOS button and listening indicator are designed for mobile-first, hands-free operation.
+    - Accessibility features include:
+      - Screen reader labels and roles
+      - Large touch targets and high-contrast colors
+      - Responsive layout for mobile devices
+    - Hands-free activation is supported via wake word detection ("Hermes" or "Hey Hermes").
+    - Components are ready for integration with voice input and accessibility APIs.
     ```
     *(Important: You only need to reference `@process-task-list.md` for the *first* task. The instructions within it guide the AI for subsequent tasks.)*
 

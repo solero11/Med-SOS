@@ -1,21 +1,14 @@
 """
-Minimal ASR microservice for the Windows SOS desktop build.
+Minimal ASR proxy for the Windows SOS desktop build.
 
-The service can operate in two modes:
-1. Proxy mode – forwards requests to an external ASR endpoint specified by
-   ``ASR_FORWARD_URL``.
-2. Stub mode – returns a simple placeholder transcript so local testing is
-   possible without a heavyweight model.
+This service now always forwards requests to a real ASR backend. Configure the
+target via ``ASR_FORWARD_URL``.
 """
 
 from __future__ import annotations
 
-import audioop
-import io
 import os
 from typing import Any, Dict, Optional
-from wave import Error as WaveError
-from wave import open as wave_open
 
 import httpx
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
@@ -27,15 +20,36 @@ from src.utils.logger import configure_logger
 app = FastAPI(title="SOS ASR Service", version="0.1.0")
 logger = configure_logger("sos.asr")
 
-FORWARD_URL = os.environ.get("ASR_FORWARD_URL")
+FORWARD_URL_RAW = os.environ.get("ASR_FORWARD_URL")
+FORWARD_URL = FORWARD_URL_RAW.rstrip("/") if FORWARD_URL_RAW else None
 HTTP_TIMEOUT = float(os.environ.get("ASR_HTTP_TIMEOUT", "60"))
 
 
 @app.get("/health")
 async def health() -> Dict[str, Any]:
+    if not FORWARD_URL:
+        return {
+            "status": "error",
+            "mode": "unconfigured",
+            "detail": "ASR_FORWARD_URL not set; configure a real ASR backend.",
+        }
+
+    backend_info: Dict[str, Any] = {}
+    backend_status = "ok"
+    try:
+        async with httpx.AsyncClient(timeout=HTTP_TIMEOUT) as client:
+            response = await client.get(f"{FORWARD_URL}/health")
+            response.raise_for_status()
+            backend_info = response.json()
+    except httpx.HTTPError as exc:
+        backend_status = "unreachable"
+        logger.error("ASR backend health check failed: %s", exc)
     return {
-        "status": "ok",
-        "mode": "proxy" if FORWARD_URL else "stub",
+        "status": "ok" if backend_status == "ok" else "degraded",
+        "mode": "proxy",
+        "forward_url": FORWARD_URL,
+        "backend_status": backend_status,
+        "backend_info": backend_info,
     }
 
 
@@ -46,22 +60,11 @@ async def asr_endpoint(
 ) -> JSONResponse:
     audio_bytes = await audio.read()
 
-    if FORWARD_URL:
-        return await _forward_to_backend(audio_bytes, audio.filename, audio.content_type, language)
+    if not FORWARD_URL:
+        logger.error("ASR request received but ASR_FORWARD_URL is not configured")
+        raise HTTPException(status_code=503, detail="ASR backend not configured")
 
-    text = _stub_transcript(audio_bytes)
-    payload: Dict[str, Any] = {
-        "text": text,
-        "language": language or "en",
-        "segments": [
-            {
-                "text": text,
-                "start": 0.0,
-                "end": max(len(audio_bytes) / (16_000 * 2), 0.1),
-            }
-        ],
-    }
-    return JSONResponse(content=payload)
+    return await _forward_to_backend(audio_bytes, audio.filename, audio.content_type, language)
 
 
 async def _forward_to_backend(
@@ -82,36 +85,12 @@ async def _forward_to_backend(
         data["language"] = language
     async with httpx.AsyncClient(timeout=HTTP_TIMEOUT) as client:
         try:
-            response = await client.post(f"{FORWARD_URL.rstrip('/')}/asr", files=files, data=data)
+            response = await client.post(f"{FORWARD_URL}/asr", files=files, data=data)
             response.raise_for_status()
         except httpx.HTTPError as exc:
             logger.error("ASR backend request failed: %s", exc)
             raise HTTPException(status_code=502, detail="ASR backend unavailable") from exc
     return JSONResponse(content=response.json())
-
-
-def _stub_transcript(audio_bytes: bytes) -> str:
-    """
-    Cheap RMS-based heuristic: if we detect energy, emit a canned transcript;
-    otherwise report silence.
-    """
-    if not audio_bytes:
-        return ""
-    try:
-        with wave_open(io.BytesIO(audio_bytes), "rb") as wav:
-            frames = wav.readframes(wav.getnframes())
-            rms = audioop.rms(frames, wav.getsampwidth())
-    except (WaveError, audioop.error) as exc:
-        logger.warning("Unable to parse audio payload: %s", exc)
-        return ""
-
-    if rms < 150:
-        return ""
-    if rms < 500:
-        return "Patient breathing quietly."
-    if rms < 1500:
-        return "Patient reports chest tightness."
-    return "Severe distress noted, prepare for airway support."
 
 
 if __name__ == "__main__":  # pragma: no cover - manual launch helper

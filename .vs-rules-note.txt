@@ -1,0 +1,3 @@
+ONLY use full URL: http://100.111.223.74:1234 for LLM API endpoint.
+Do NOT use localhost or 127.0.0.1 in any configuration, scripts, or code.
+This is required for VS rules and deployment consistency.

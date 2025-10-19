@@ -29,6 +29,7 @@
   - [ ] 1.3 Integrate wake word detection (“Hermes” or “Hey Hermes”) to trigger listening mode.
   - [ ] 1.4 Ensure the UI is accessible, mobile-first, and hands-free by default.
   - [ ] 1.5 Write unit tests for the SOS button and listening indicator components.
+  - [ ] 1.6 All unit tests for SOS Button and Listening UI must pass successfully.
 
 - [ ] 2.0 Build SBAR Chat Flow and Data Handling
   - [ ] 2.1 Implement the chat interface for physician-LLM interaction.
@@ -38,6 +39,7 @@
   - [ ] 2.5 Display the completed SBAR object on-screen for review.
   - [ ] 2.6 Implement export functionality for SBAR (e.g., for documentation or handoff).
   - [ ] 2.7 Write unit tests for chat flow and SBAR builder utility.
+  - [ ] 2.8 All unit tests for SBAR Chat Flow and Data Handling must pass successfully.
 
 - [ ] 3.0 Integrate LLM and Protocol Retrieval
   - [ ] 3.1 Implement the `llmClient.ts` to communicate with LM Studio’s Medicine 13B model via API.
@@ -46,6 +48,7 @@
   - [ ] 3.4 Ensure the LLM always prefers YAML protocol steps when available and phrases outputs as questions, not directives.
   - [ ] 3.5 Handle multi-turn, context-aware conversations with the LLM.
   - [ ] 3.6 Write unit tests for LLM integration and protocol retrieval logic.
+  - [ ] 3.7 All unit tests for LLM and Protocol Retrieval must pass successfully.
 
 - [ ] 4.0 Develop Protocol Library Management and YAML Generation Tools
   - [ ] 4.1 Integrate the `yaml_protocol_generator.py` CLI tool for protocol ingestion from PDFs, web pages, or LLM prompts.
@@ -54,6 +57,7 @@
   - [ ] 4.4 Store YAML protocols in `protocolLibrary.yaml` and ensure ChromaDB integration for retrieval.
   - [ ] 4.5 Implement versioning and audit logging for all YAML changes.
   - [ ] 4.6 Write unit tests for YAML ingestion, indexing, and ChromaDB integration.
+  - [ ] 4.7 All unit tests for Protocol Library Management and YAML Generation Tools must pass successfully.
 
 - [ ] 5.0 Implement Admin Approval, Fallback, and Audit Logging Features
   - [ ] 5.1 Implement the admin approval workflow: send new/updated YAMLs to the admin email for review.
@@ -61,3 +65,4 @@
   - [ ] 5.3 Ensure all YAML changes (creation, edits, approvals) are logged in `auditLogger.ts`.
   - [ ] 5.4 Implement fallback logic: if no relevant YAML is found, Hermes continues to ask clarifying questions; if still unable to help, responds with the fallback message and triggers a red flag notification to the admin.
   - [ ] 5.5 Write unit tests for admin approval, fallback, and audit logging features.
+  - [ ] 5.6 All unit tests for Admin Approval, Fallback, and Audit Logging Features must pass successfully.

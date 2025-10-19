@@ -1,0 +1,128 @@
+INFO:     127.0.0.1:60238 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60241 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53391 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53396 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63445 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63459 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62972 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62973 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62974 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62975 - "POST /api/browser/process_audio HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62976 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62977 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62978 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62979 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62980 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62981 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62982 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62983 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62984 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64709 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64710 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64711 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64712 - "POST /api/browser/process_audio HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64713 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64714 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64715 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64716 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64717 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64718 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64719 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64720 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64721 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50075 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50082 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50107 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50388 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50391 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50405 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50421 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50421 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50421 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50421 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50421 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59984 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59985 - "GET /ready HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58582 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58583 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58584 - "GET /ready HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58585 - "GET /ready HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58597 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56860 - "GET /health?deep=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56861 - "GET /ready?deep=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56864 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56865 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56866 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56867 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56868 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56869 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56870 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56871 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56872 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56873 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56892 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56915 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56943 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56975 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56996 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56996 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56996 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56996 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56996 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57008 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61839 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56615 - "GET /health?deep=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56616 - "GET /ready?deep=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56619 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56620 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56621 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56622 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56623 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56624 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56625 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56626 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56627 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56628 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52110 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52131 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52131 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52131 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52131 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52131 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52140 - "GET /metrics/summary HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52141 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52144 - "GET /metrics HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52162 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52178 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52178 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52178 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52178 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52178 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63127 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63143 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63143 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63143 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63143 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63143 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63171 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63187 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63187 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63187 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63187 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63187 - "POST /asr HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51306 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51338 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51355 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51357 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51363 - "GET /health?deep=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51364 - "GET /ready?deep=1 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51367 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51368 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51369 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51370 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51371 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51372 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51373 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51374 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51375 - "POST /asr HTTP/1.1" 503 Service Unavailable
+INFO:     127.0.0.1:51376 - "POST /asr HTTP/1.1" 503 Service Unavailable

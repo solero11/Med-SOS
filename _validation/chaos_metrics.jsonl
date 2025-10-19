@@ -1,2 +1,5 @@
 {"timestamp": "2025-10-16T00:33:38Z", "case_id": "unknown", "strict_ok": false, "tolerant_ok": false, "llm_model": "Medicine-13B", "prompt": "chaos_harness_generate_case", "response_len": 711, "elapsed_sec": 5.372}
 {"timestamp": "2025-10-16T00:34:35Z", "case_id": "case1", "strict_ok": true, "tolerant_ok": false, "llm_model": "Medicine-13B", "prompt": "chaos_harness_generate_case", "response_len": 645, "elapsed_sec": 4.599}
+{"timestamp": "2025-10-16T23:50:08Z", "case_id": "demo-case", "strict_ok": true, "tolerant_ok": false, "llm_model": "Medicine-13B", "prompt": "chaos_harness_generate_case", "response_len": 201, "elapsed_sec": 0.0}
+{"timestamp": "2025-10-16T23:52:16Z", "case_id": "demo-case", "strict_ok": true, "tolerant_ok": false, "llm_model": "Medicine-13B", "prompt": "chaos_harness_generate_case", "response_len": 201, "elapsed_sec": 0.0}
+{"timestamp": "2025-10-16T23:54:23Z", "case_id": "demo-case", "strict_ok": true, "tolerant_ok": false, "llm_model": "Medicine-13B", "prompt": "chaos_harness_generate_case", "response_len": 201, "elapsed_sec": 0.0}

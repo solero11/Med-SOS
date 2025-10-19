@@ -18,4 +18,4 @@ with wave.open(str(out), "w") as wav_file:
         value = int(32767 * 0.5 * math.sin(2 * math.pi * freq * i / rate))
         wav_file.writeframes(struct.pack("<h", value))
 
-print(f"Generated {out} ({duration}s @ {rate} Hz)")*** End Patch
+print(f"Generated {out} ({duration}s @ {rate} Hz)")
