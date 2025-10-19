@@ -20,7 +20,7 @@ def _join(base_url: str, path: str) -> str:
 
 @dataclass
 class LMStudioRuntime:
-    base_url: str = "http://localhost:1234"
+    base_url: str = "http://100.111.223.74:1234"
     target_model: str = "medicine-llm-13b"
     timeout: int = 10
 

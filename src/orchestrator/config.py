@@ -13,9 +13,9 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 VALIDATION_BUCKET = os.getenv("VALIDATION_BUCKET")
 ORCH_ENV = os.getenv("ORCH_ENV", "local")
 LLM_MODE = os.getenv("LLM_MODE", "local").lower()
-LM_LOCAL_URL = "http://127.0.0.1:1234/v1/chat/completions"
+LM_LOCAL_URL = "http://100.111.223.74:1234/v1/chat/completions"
 LLM_OLLAMA_URL = os.getenv("LLM_OLLAMA_URL", "http://127.0.0.1:11434/v1/chat/completions")
-DEFAULT_LLM_URL = "https://openrouter.ai/api/v1/chat/completions"
+DEFAULT_LLM_URL = "http://100.111.223.74:1234/v1/chat/completions"
 
 LLM_API_URL = os.getenv("LLM_API_URL") or (LM_LOCAL_URL if USE_LOCAL_LLM else DEFAULT_LLM_URL)
 ORCHESTRATOR_AUDIO_DIR = Path(os.getenv("ORCHESTRATOR_AUDIO_DIR", "_validation/orchestrator_audio")).resolve()
@@ -26,14 +26,9 @@ TOKEN_SECRET = os.getenv("TOKEN_SECRET", "change-me")
 def get_llm_url() -> str:
     """
     Determine which LLM endpoint to call based on environment variables.
+    Always use the remote LM Studio server for deployment consistency.
     """
-    if LLM_API_URL:
-        return LLM_API_URL
-    if LLM_MODE == "local":
-        return LM_LOCAL_URL
-    if LLM_MODE in ("ollama", "cloud_ollama"):
-        return LLM_OLLAMA_URL
-    return DEFAULT_LLM_URL
+    return os.getenv("LLM_API_URL", "http://100.111.223.74:1234/v1/chat/completions")
 
 
 __all__ = [

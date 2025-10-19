@@ -16,7 +16,7 @@ import requests
 
 
 def _default_api_url() -> str:
-    return os.environ.get("LLM_API_URL", "http://127.0.0.1:1234/v1/chat/completions")
+    return os.environ.get("LLM_API_URL", "http://100.111.223.74:1234/v1/chat/completions")
 
 
 def _default_model() -> str:
